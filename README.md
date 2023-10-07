@@ -14,3 +14,12 @@ StreamLit DashBoards **&** WebPages **&** WebApps.
 # Projects:
 
 * Criminalidade em São Paulo (Sao Paulo Criminality)
+
+<br>
+
+> In order to view the projects:
+
+```shell
+pip install streamlit
+streamlit run {path}filename.py
+```
