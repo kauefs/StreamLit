@@ -18,7 +18,7 @@ st.sidebar.title('DashBoard')
 ano         =  st.sidebar.slider('Escolha do Ano:', 2010, 2018, 2014)
 FilteredDF  =  df[(df.time.dt.year == ano)]
 st.sidebar.info( ' {} Registros'.format(FilteredDF.shape[0]))
-if  st.sidebar.checkbox('Exibir Tabela', value=True):
+if  st.sidebar.checkbox('Tabela de Dados', value=True):
     st.subheader(       'Dados:')
     st.markdown( '''     Fonte: [GeoSpatial Sao Paulo Crime DataBase](https://www.kaggle.com/datasets/danlessa/geospatial-sao-paulo-crime-database/data)''')
     st.markdown(f'''➡️Exibindo   {' **{}** ocorrências'.format(FilteredDF.shape[0])} em **{ano}**:''')
