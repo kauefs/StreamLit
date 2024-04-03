@@ -35,7 +35,7 @@ with st.container():
      with cols[0]:st.empty()
      with cols[1]:st.write('1 April 2024')
      with cols[2]:st.empty()
-st.header(      'DataFrameDEMO')
+st.header(      'DataFrame&ChartDEMO')
 @st.cache_data
 def get_UN_data():
     AWS_BUCKET_URL =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
