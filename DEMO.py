@@ -28,7 +28,7 @@ with st.sidebar.container():
      with cols[1]:st.markdown('''©2024™''')
      with cols[2]:st.empty()
 # MAIN
-st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://github.com/kauefs/StreamLit/raw/%40/img/DataVision3.png)''')
+st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider()
 with st.container():
      cols = st.columns(3)
