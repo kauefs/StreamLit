@@ -16,6 +16,7 @@
 
 ## Works & Projects:
 
+* [DEMO](https://daemon.streamlit.app)
 * [Stocks](https://sto-cks.streamlit.app/)
 * [Accidents in SP](https://accidentssp.streamlit.app/)
 * [In Search of a Warming!](https://warming.streamlit.app/)
