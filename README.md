@@ -6,7 +6,9 @@
 [![GPLv3 license](https://img.shields.io/badge/License-Apache_2.0-FF4500.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](https://github.com/kauefs/portfolio/issues)
 
-![DatAVisi0n](img/DataVision3.png)
+![ƊⱭȾɅViƧi🧿Ƞ](img/DataVision3.png)
+
+<p align=center>ƊⱭȾɅViƧi🧿Ƞ</p>
 
 <p align=center>Data Science <b>|</b> Computer Vision <b>|</b> ML <b>|</b> AI <b>|</b> ☁️ <b>|</b> CyberSecurity <b>|</b> 👨🏻‍💻</p>
 
