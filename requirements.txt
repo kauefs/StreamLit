@@ -1,0 +1,16 @@
+pip
+ssl
+numpy
+pandas
+matplotlib
+seaborn
+pydeck
+plotly
+altair
+yfinance
+ta
+datetime
+wordcloud
+folium
+streamlit
+streamlit_folium
