@@ -43,7 +43,7 @@ def get_UN_data():
     return df.set_index('Region')
 try:
     df = get_UN_data()
-    countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'France', 'Germany', 'China', 'United States of America'])
+    countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
     if not countries:  st.error(      'Please select at least one country.')
     else:
         data        =  df.loc[countries]
