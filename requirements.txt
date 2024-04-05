@@ -1,7 +1,9 @@
 pip
+certifi
 numpy
 pandas
 pandas_datareader
+pandas_profiling
 matplotlib
 seaborn
 pydeck
