@@ -43,11 +43,11 @@ enableStaticServing                  =  false
 [theme]
 
 base                                 = 'dark'
-primaryColor                         = '#00BFFF'
+primaryColor                         = '#6595EE'
 backgroundColor                      = '#000000'
 secondaryBackgroundColor             = '#282828'
 textColor                            = '#FFFFFF'
-font                                 = 'sans serif' # Font Family (serif | sans serif | monospace)
+font                                 = 'sans serif'
 
 #https://www.w3schools.com/colors/colors_names.asp
 #https://htmlcolorcodes.com/
