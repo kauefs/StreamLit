@@ -43,7 +43,7 @@ enableStaticServing                  =  false
 [theme]
 
 base                                 = 'dark'
-primaryColor                         = '#6595EE'
+primaryColor                         = '#282828'
 backgroundColor                      = '#000000'
 secondaryBackgroundColor             = '#282828'
 textColor                            = '#FFFFFF'
