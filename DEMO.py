@@ -13,8 +13,8 @@ st.sidebar.markdown('''
 [![Python](  https://img.shields.io/badge/Python-3-blue.svg)](                            https://www.python.org/)
 [![License]( https://img.shields.io/badge/License-Apache_2.0-black.svg)](                 https://www.apache.org/licenses/LICENSE-2.0/)
             ''')
-st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|** 👨🏻‍💻''')
-with st.sidebar.container():
+st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
+with    st.sidebar.container():
     if  st.button('StreamLit Hello'):
         st.sidebar.success( 'Hello World!')
     else:
@@ -22,7 +22,7 @@ with st.sidebar.container():
 st.sidebar.header('Data Analysis')
 PlaceHolder = st.sidebar.empty()
 st.sidebar.markdown(sys.version)
-with st.sidebar.container():
+with    st.sidebar.container():
      cols = st.columns(3)
      with cols[0]:st.empty()
      with cols[1]:st.markdown('''©2024™''')
@@ -30,24 +30,24 @@ with st.sidebar.container():
 # MAIN
 st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider()
-with st.container():
+with    st.container():
      cols = st.columns(3)
      with cols[0]:st.empty()
      with cols[1]:st.write('1 April 2024')
      with cols[2]:st.empty()
-st.header(      'DataFrame&ChartDEMO')
+st.header(          'DataFrame&ChartDEMO')
 @st.cache_data
 def get_UN_data():
-    AWS_BUCKET_URL =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
-    df             =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
+    AWS_BUCKET_URL  =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
+    df              =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
     return df.set_index('Region')
 try:
-    df = get_UN_data()
+    df              = get_UN_data()
     countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
     if not countries:  st.error(      'Please select at least one country.')
     else:
         data        =  df.loc[countries]
-        data       /= 1000000.0
+        data       /=      1000000.0
         st.write(                     '### Gross Agricultural Production ($B)', data.sort_index())
         data        = data.T.reset_index()
         data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross Agricultural Product ($B)'})
