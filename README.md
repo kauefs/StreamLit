@@ -1,10 +1,11 @@
 # StreamLit DashBoards & Pages & Apps
 
-<a href='https://github.com/kauefs'           alt='WorkInProgress'><img src='https://img.shields.io/badge/Work%20in%20Progress-FF103F'                  /></a>
-<a href='https://www.linkedin.com/in/kauefs/' alt='LinkedIn'      ><img src='https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white'/></a>
-[![](https://img.shields.io/badge/Python-3-blue.svg)](https://www.python.org/)
-[![GPLv3 license](https://img.shields.io/badge/License-Apache_2.0-FF4500.svg)](http://perso.crans.org/besson/LICENSE.html)
-[![contributions welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](https://github.com/kauefs/portfolio/issues)
+[![Work in Progress](     https://img.shields.io/badge/-FF103F?style=flat&logo=icloud&logoColor=FFFFFF&label=Work%20in%20Progress&labelColor=FF103F&color=FF103F)](https://github.com/kauefs/)
+[![Medium](               https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](      https://medium.com/@kauefs)
+[![LinkedIn](             https://img.shields.io/badge/-0077B5?logo=linkedin&logoColor=FFFFFF)](    https://www.linkedin.com/in/kauefs/)
+[![Python](               https://img.shields.io/badge/-3-4584B6?logo=python&logoColor=FFDE57&labelColor=4584B6&color=646464)](                                                                                                                                  https://www.python.org/)
+[![License](              https://img.shields.io/badge/Apache_2.0-D22128?logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](         https://www.apache.org/licenses/LICENSE-2.0)
+[![Contributions Welcome](https://img.shields.io/badge/Welcome-4CAF50?logo=apple&logoColor=FFFFFF&label=Contributions&labelColor=6D6E71&color=4CAF50)](https://github.com/kauefs/portfolio/issues)
 
 ![ƊⱭȾɅViƧi🧿Ƞ](img/DataVision3.png)
 
