@@ -22,7 +22,6 @@ st.sidebar.markdown('''
                     ''')
 st.sidebar.text(    '1 April 2024' )
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
-st.sidebar.divider(                )
 with    st.sidebar.container(      ):
     if  st.button('StreamLit Hello'):
         st.sidebar.success( 'Hello World!')
