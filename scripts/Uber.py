@@ -47,8 +47,8 @@ st.subheader('PickUps by Hour:')
 hist  = np.histogram(data[DATE].dt.hour, bins=24, range=(0,24))[0]
 st.bar_chart(hist)
 st.divider(      )
-if table.checkbox('DataFrame', value=False):
-    st.subheader( 'DATA')
+if table.checkbox( 'DataFrame', value=False):
+    st.subheader(  'DATA'                  )
     success.success(f'''Loading {data.shape[0]} entries…''')
     st.write(data)
     st.divider(  )
