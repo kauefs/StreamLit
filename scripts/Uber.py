@@ -33,7 +33,7 @@ table      = st.sidebar.empty()
 # Filtered Rides PlaceHolder:
 success    = st.sidebar.empty()
 st.sidebar.divider()
-st.sidebar.markdown('''©2023™ [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/)''')
+st.sidebar.markdown('''©2024™ [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/)''')
 # MAIN:
 st.divider()
 st.title('Uber PickUps in NYC')
