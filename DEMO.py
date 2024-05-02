@@ -4,44 +4,39 @@ import streamlit        as st
 from   urllib.error import URLError
 import sys
 st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
-# SIDE
+# DATA:
+@st.cache_data
+def get_UN_data():
+    AWS_BUCKET_URL  =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
+    df              =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
+    return df.set_index('Region')
+# SIDE:
 st.sidebar.title('ƊⱭȾɅViƧi🧿Ƞ')
-st.sidebar.divider()
+st.sidebar.divider(            )
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](                                 https://github.com/kauefs/)
 [![Medium](  https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](                                 https://medium.com/@kauefs)
 [![LinkedIn](https://img.shields.io/badge/-0077B5?logo=linkedin&logoColor=FFFFFF)](                               https://www.linkedin.com/in/kauefs/)
 [![Python](  https://img.shields.io/badge/-3-4584B6?logo=python&logoColor=FFDE57&labelColor=4584B6&color=646464)](https://www.python.org/)
 [![License]( https://img.shields.io/github/license/kauefs/StreamLit?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
-            ''')
+                    ''')
+st.sidebar.text(    '1 April 2024' )
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
-with    st.sidebar.container():
+st.sidebar.divider(                )
+with    st.sidebar.container(      ):
     if  st.button('StreamLit Hello'):
         st.sidebar.success( 'Hello World!')
     else:
-        st.sidebar.info(    'Hello There')
+        st.sidebar.info(    'Hello There' )
+st.sidebar.divider(                       )
 st.sidebar.header('Data Analysis')
-PlaceHolder = st.sidebar.empty()
-st.sidebar.markdown(sys.version)
-with    st.sidebar.container():
-     cols = st.columns(3)
-     with cols[0]:st.empty()
-     with cols[1]:st.markdown('''©2024™''')
-     with cols[2]:st.empty()
-# MAIN
+PlaceHolder = st.sidebar.empty(  )
+st.sidebar.markdown(sys.version  )
+st.sidebar.markdown('''©2024™ [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/)''')
+# MAIN:
 st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider()
-with    st.container():
-     cols = st.columns(3)
-     with cols[0]:st.empty()
-     with cols[1]:st.write('1 April 2024')
-     with cols[2]:st.empty()
-st.header(          'DataFrame&ChartDEMO')
-@st.cache_data
-def get_UN_data():
-    AWS_BUCKET_URL  =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
-    df              =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
-    return df.set_index('Region')
+st.header(      'DataFrame&ChartDEMO')
 try:
     df              = get_UN_data()
     countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
@@ -62,3 +57,4 @@ except  URLError as e:st.error( '''
                                 '''
                                 % e.reason)
 PlaceHolder.scatter_chart(df, height=450, use_container_width=True)
+st.divider()
