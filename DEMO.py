@@ -35,7 +35,8 @@ st.sidebar.markdown('''©2024™ [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/)
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider()
-st.header(      'DataFrame&ChartDEMO')
+st.title(       'StreamLitDEMO')
+st.header(      'DataFrame&Chart')
 try:
     df              = get_UN_data()
     countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
