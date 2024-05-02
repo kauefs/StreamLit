@@ -22,14 +22,15 @@ https://dev.to/envoy_/series/18228
 
 ## Works & Projects:
 
-* [DEMO](https://daemon.streamlit.app)
+* [DEMO](https://daemon.streamlit.app/)
+* [Uber](https://uber.streamlit.app/)
 * [Stocks](https://sto-cks.streamlit.app/)
 * [Accidents in SP](https://accidentssp.streamlit.app/)
 * [In Search of a Warming!](https://warming.streamlit.app/)
 * [COVID19 in Brazil](https://covid19br.streamlit.app/)
 * [COVID19](https://covid19charts.streamlit.app/)
 * [Sao Paulo Criminality](https://criminality.streamlit.app/)
-* [Inside Sydney Airbnb](https://sydney.streamlit.app/)
+* [InSide SydNey AirBnB](https://sydney.streamlit.app/)
 <!--
 <br>
 
