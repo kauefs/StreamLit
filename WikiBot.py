@@ -8,7 +8,7 @@ import streamlit           as st
 
 st.set_page_config(page_title='SEARCH', page_icon='🔎', layout='wide', initial_sidebar_state='auto')
 
-# Iniciando Sessão:
+# Session:
 st.session_state.setdefault(None)
 if      'messages' not in st.session_state:st.session_state.messages=[]
 if 'last_messages' not in st.session_state:st.session_state.last_messages=''
@@ -16,8 +16,9 @@ if 'last_messages' not in st.session_state:st.session_state.last_messages=''
 # API-KEY
 api_key = st.secrets['api_key']
 genai.configure(api_key=api_key)
+
 # CONFIGURAÇÕES GERAIS
-# Função de Busca na WikePédia:
+# WikePedia Search Function:
 def wikipedia_search(search_queries:list[str])->list[str]:
     '''Pesquisa na WikipédiA para cada questão, retornando resumo das páginas relevantes.'''
     topics         = 3
@@ -25,7 +26,6 @@ def wikipedia_search(search_queries:list[str])->list[str]:
     search_urls    =[]
     mining_model   =genai.GenerativeModel('gemini-pro')
     summary_results=[]
-    wikipedia.set_lang('pt')
     for query in search_queries:
         print(f'Buscando por "{query}"')
         search_terms = wikipedia.search(query)
@@ -88,9 +88,8 @@ Busca do usuário: {query}
                     '''
 
 # SIDE
+st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.image('https://pt.wikipedia.org/static/images/icons/wikipedia.png')
-# st.sidebar.image('https://pt.wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-fr.svg')
-# st.sidebar.image('https://pt.wikipedia.org/static/images/mobile/copyright/wikipedia-tagline-pt.svg')
 st.sidebar.title('Projeto para 2ª Edição de Imersão IA Alura + Google')
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
