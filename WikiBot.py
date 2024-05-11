@@ -4,7 +4,7 @@ import  numpy               as   np
 import  google.generativeai as   genai
 import  google.ai.generativelanguage   as  glm
 from wikipedia.exceptions import DisambiguationError, PageError
-import streamlit           as st
+import  streamlit           as st
 
 st.set_page_config(page_title='SEARCH', page_icon='🔎', layout='wide', initial_sidebar_state='auto')
 
@@ -14,7 +14,7 @@ if      'messages' not in st.session_state:st.session_state.messages=[]
 if 'last_messages' not in st.session_state:st.session_state.last_messages=''
 
 # API-KEY
-api_key = st.secrets['api_key']
+api_key  =  st.secrets['api_key']
 genai.configure(api_key=api_key)
 
 # CONFIGURAÇÕES GERAIS
@@ -109,19 +109,19 @@ st.sidebar.divider()
 # Configurações de Segurança:
 st.sidebar.success('Configurações de Segurança')
 seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
-hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
-harassment        = st.sidebar.selectbox(   'Harassment:', seg, index=0)
-sexual            = st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
-dangerous         = st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
+hate              = st.sidebar.selectbox( 'Hate:'      , seg, index=0)
+harassment        = st.sidebar.selectbox( 'Harassment:', seg, index=0)
+sexual            = st.sidebar.selectbox( 'Sexual:'    , seg, index=0)
+dangerous         = st.sidebar.selectbox( 'Dangerous:' , seg, index=0)
 # Configurando Modelo:
 model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  :    1 ,
-                     'temperature'      : temperature,
-                     'top_p'            : top_p,
-                     'top_k'            : top_k,
-                     'stop_sequences'   : None ,
-                     'max_output_tokens': max_output_tokens}
-safety_settings   = {'HATE'             :hate,
+generation_config = {'candidate_count'  :   1  ,
+                     'temperature'      :temperature,
+                     'top_p'            :top_p ,
+                     'top_k'            :top_k ,
+                     'stop_sequences'   :None  ,
+                     'max_output_tokens':max_output_tokens}
+safety_settings   = {'HATE'             :hate  ,
                      'HARASSMENT'       :harassment,
                      'SEXUAL'           :sexual,
                      'DANGEROUS'        :dangerous}
@@ -171,13 +171,13 @@ if query :=    st.chat_input('Faça sua pesquina na WikipédiA em português aqu
                                                                                             )
                                                                                         )
                             st.markdown(response.text)
-                            # Função Embedding:
+                            # Função             Embedding:
                             def get_embeddings(content:list[str])->np.ndarray:
                                 embeddings = genai.embed_content('models/embedding-001', content, 'SEMANTIC_SIMILARITY')
                                 embds      = embeddings.get('embedding', None)
                                 embds      = np.array(embds).reshape(len(embds),-1)
                                 return embds
-                            # Função Produto Escalar:
+                            # Função     Produto Escalar:
                             def dot_product(a:np.ndarray,  b:np.ndarray):
                                 return (a @ b.T)
                             # Aplicando a Função Embedding:
