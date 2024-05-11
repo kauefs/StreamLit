@@ -2,8 +2,7 @@
 https://github.com/Envoy-VC/awesome-badges
 https://dev.to/envoy_/series/18228
 -->
-
-# StreamLit DashBoards & Pages & Apps
+# <p align=center><font color=#F0F0F0 font-family=Georgia><ins>ƊⱭȾɅViƧi🧿Ƞ</ins></font></p>
 
 [![Work in Progress](     https://img.shields.io/badge/-FF103F?style=flat&logo=icloud&logoColor=FFFFFF&label=Work%20in%20Progress&labelColor=FF103F&color=FF103F)](https://github.com/kauefs/)
 [![Medium](               https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](      https://medium.com/@kauefs)
@@ -14,13 +13,11 @@ https://dev.to/envoy_/series/18228
 
 ![ƊⱭȾɅViƧi🧿Ƞ](img/DataVision3.png)
 
-# <p align=center><font color=#F0F0F0 font-family=Georgia><ins>ƊⱭȾɅViƧi🧿Ƞ</ins></font></p>
-
 <p align=center>Data Science <b>|</b> Computer Vision <b>|</b> ML <b>|</b> AI <b>|</b> ☁️ <b>|</b> CyberSecurity <b>|</b> 👨🏻‍💻</p>
 
 <p align=center><a href=https://www.python.org/ target=_blank rel=noreferrer><img src=https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg width=35 height=35 alt=Python/></p>
 
-## Works & Projects:
+## <ins>StreamLit DashBoards & Pages & Apps</ins>
 
 * [DEMO](https://daemon.streamlit.app/)
 * [Uber NYC](https://ubernyc.streamlit.app/)
