@@ -14,7 +14,7 @@ https://dev.to/envoy_/series/18228
 
 ![ƊⱭȾɅViƧi🧿Ƞ](img/DataVision3.png)
 
-# <p align=center><font color=#F0F0F0 font-family=Georgia><ins><strong>ƊⱭȾɅViƧi🧿Ƞ</strong></ins></font></p>
+# <p align=center><font color=#F0F0F0 font-family=Georgia><ins>ƊⱭȾɅViƧi🧿Ƞ</ins></font></p>
 
 <p align=center>Data Science <b>|</b> Computer Vision <b>|</b> ML <b>|</b> AI <b>|</b> ☁️ <b>|</b> CyberSecurity <b>|</b> 👨🏻‍💻</p>
 
