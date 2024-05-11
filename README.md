@@ -24,6 +24,7 @@ https://dev.to/envoy_/series/18228
 ## <ins>StreamLit DashBoards & Pages & Apps</ins>
 
 * [DEMO](https://daemon.streamlit.app/)
+* [WikiBot](https://wikib0t.streamlit.app/)
 * [Uber NYC](https://ubernyc.streamlit.app/)
 * [Stocks](https://sto-cks.streamlit.app/)
 * [Accidents in SP](https://accidentssp.streamlit.app/)
