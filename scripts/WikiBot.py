@@ -153,7 +153,7 @@ if query :=    st.chat_input('Search WikipediA'):
                             st.markdown(query)
                     with    st.chat_message('assistant'):
                             res      =    chat.send_message(instructions.format(query=query))
-                            st.write('Searching…')
+                            st.write('Searching… please wait…')
                             fc       =     res.candidates[0].content.parts[0].function_call
                             fc       =type(fc).to_dict(fc)
                             summaries=  wikipedia_search(**fc['args'])
@@ -189,8 +189,8 @@ if query :=    st.chat_input('Search WikipediA'):
                                 embed_hyde  = get_embeddings([hyde.text])
                                 embed_search= get_embeddings(summaries)
                             # Similarity Score:
-                            sim_value       = dot_product(embed_search, embed_query)
-                            sim_value       = dot_product(embed_search, embed_hyde )
+                            sim_value_query = dot_product(embed_search, embed_query)
+                            sim_value_hyde  = dot_product(embed_search, embed_hyde )
                             # Query Rank:
                             st.write('  Query Scores:\n',                   sim_value_query)
                             st.write('\n  Ordered Query Scores:\n', np.sort(sim_value_query, axis=0)[::-1])
