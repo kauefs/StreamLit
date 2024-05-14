@@ -142,9 +142,9 @@ st.markdown('''
             Inspired by an [example](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) from Google,
             using _Embedding_ from Google's Artificial Inteligence (AI) **Gemini** to rerank search results in WikipediA.
 
-            _Embedding_ é uma técnica de Processamento de Linguagem Natural (PLN) que converte texto em vetores numéricos,
-            capturando significado semântico **&** contexto, de forma que textos com conteúdos semelhantes apresentam _embeddings_ mais próximos,
-            permitindo comparações textuais e o relacionamento entre textos, facilitando busca **&** classificação.
+            Text embeddings are a natural language processing (NLP) technique that converts text into numerical vectors,
+            capturing semantic meaning **&** context which results in text with similar meanings having closer embeddings,
+            alowing to compare different texts **&** understand how they relate.
             ''')
 st.divider()
 # Chat de Pesquisa:
