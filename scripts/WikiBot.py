@@ -4,63 +4,63 @@ import  numpy               as   np
 import  google.generativeai as   genai
 import  google.ai.generativelanguage   as  glm
 from wikipedia.exceptions import DisambiguationError, PageError
-import  streamlit           as st
+import  streamlit           as   st
 
 st.set_page_config(page_title='SEARCH', page_icon='🔎', layout='wide', initial_sidebar_state='auto')
 
-# Session:
+# Iniciando Sessão:
 st.session_state.setdefault(None)
 if      'messages' not in st.session_state:st.session_state.messages=[]
 if 'last_messages' not in st.session_state:st.session_state.last_messages=''
 
 # API-KEY
-api_key  =  st.secrets['api_key']
+api_key = st.secrets['api_key']
 genai.configure(api_key=api_key)
 
 # CONFIGURAÇÕES GERAIS
-# WikePedia Search Function:
+# Função de Busca na WikePédia:
 def wikipedia_search(search_queries:list[str])->list[str]:
-    '''Pesquisa na WikipédiA para cada questão, retornando resumo das páginas relevantes.'''
+    '''WikipediA research returning most relevant pages.'''
     topics         = 3
     search_history =set()
     search_urls    =[]
     mining_model   =genai.GenerativeModel('gemini-pro')
     summary_results=[]
     for query in search_queries:
-        print(f'Buscando por "{query}"')
+        print(f'Searching for "{query}"')
         search_terms = wikipedia.search(query)
-        print(f'Termos relacionados: {search_terms[:topics]}')
+        print(f'Related Topics: {search_terms[:topics]}')
         for    search_term in search_terms[:topics]:
             if search_term in search_history: continue
-            print(f'Recuperando página: "{search_term}"')
+            print(f'Returning page: "{search_term}"')
             search_history.add(search_term)
             try:
                 page     = wikipedia.page(search_term, auto_suggest=False)
                 url      = page.url
-                print(f'Fonte: {url}')
+                print(f'Source: {url}')
                 search_urls.append(url)
                 page     = page.content
                 response = mining_model.generate_content(textwrap.dedent(f'''\
-                            Extraindo informações relevantes sobre a pesquisa: {query}
-                            Fonte:
+                            Extracting relevant information about the researshed term: {query}
+                            Source:
         
                             {page}
                             
-                            Observação: sem resumo, apenas extração de informação relevante.'''))
+                            Note: no summary, extracting only relevant information.'''))
                 urls = [url]
                 if response.candidates[0].citation_metadata:
                     extra_citations = response.candidates[0].citation_metadata.citation_sources
                     extra_urls      = [source.url for source in extra_citations]
                     urls.extend(extra_urls)
                     search_urls.extend(extra_urls)
-                    print('Citações Adicionais:', response.candidates[0].citation_metadata.citation_sources)
+                    print('Additional Citations:', response.candidates[0].citation_metadata.citation_sources)
                 try                   :text = response.text
                 except      ValueError:pass
                 else                  :summary_results.append(text + '\n\nCom base em:\n  ' + ',\n  '.join(urls))
-            except DisambiguationError:print(f'''Resultados quando procurando por "{search_term}"
-                                        (originados da busca "{query}") foram ambíguos, ignorando…''')
-            except           PageError:print(f'{search_term} não encontrou nenhuma página identificada, ignorando…')
-    print(f'Fontes:')
+            except DisambiguationError:print(f'''Results when searching for "{search_term}"
+                                        (originated from "{query}") were ambiguous, dropping…''')
+            except           PageError:print(f'{search_term} did not find a page, dropping…')
+    print(f'Sources:')
     for url in search_urls            :print('  ', url)
     return summary_results
 # Buscas Suplementares:
@@ -89,8 +89,10 @@ Busca do usuário: {query}
 
 # SIDE
 st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
-st.sidebar.image('https://pt.wikipedia.org/static/images/icons/wikipedia.png')
-st.sidebar.title('Projeto para 2ª Edição de Imersão IA Alura + Google')
+st.sidebar.markdown('[![Gemini](   https://img.shields.io/badge/Gemini-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=BR&uselang=pt-br)')
+st.sidebar.image(   'https://pt.wikipedia.org/static/images/icons/wikipedia.png')
+st.sidebar.markdown('[![Wikipedia](https://img.shields.io/badge/WikipediA_Donation-636466?style=flat&logo=wikipedia&logoColor=000000&labelColor=FFFFFF&color=939598)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=BR&uselang=pt-br)')
+st.sidebar.title(   'IA Google Gemini')
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
 [![Medium](  https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
@@ -100,28 +102,28 @@ st.sidebar.markdown('''
                     ''')
 st.sidebar.divider()
 # Configuração do Modelo Generativo:
-st.sidebar.info(   'Configurações do Modelo Generativo')
+st.sidebar.info(   'Generation Config')
 temperature       = st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
 top_p             = st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
 top_k             = st.sidebar.number_input('Top K:'            ,  1,     100,    3)
 max_output_tokens = st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
 st.sidebar.divider()
 # Configurações de Segurança:
-st.sidebar.success('Configurações de Segurança')
+st.sidebar.success('Safety Settings')
 seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
-hate              = st.sidebar.selectbox( 'Hate:'      , seg, index=0)
-harassment        = st.sidebar.selectbox( 'Harassment:', seg, index=0)
-sexual            = st.sidebar.selectbox( 'Sexual:'    , seg, index=0)
-dangerous         = st.sidebar.selectbox( 'Dangerous:' , seg, index=0)
+hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
+harassment        = st.sidebar.selectbox(   'Harassment:', seg, index=0)
+sexual            = st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
+dangerous         = st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
 # Configurando Modelo:
 model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  :   1  ,
-                     'temperature'      :temperature,
-                     'top_p'            :top_p ,
-                     'top_k'            :top_k ,
-                     'stop_sequences'   :None  ,
-                     'max_output_tokens':max_output_tokens}
-safety_settings   = {'HATE'             :hate  ,
+generation_config = {'candidate_count'  :    1 ,
+                     'temperature'      : temperature,
+                     'top_p'            : top_p,
+                     'top_k'            : top_k,
+                     'stop_sequences'   : None ,
+                     'max_output_tokens': max_output_tokens}
+safety_settings   = {'HATE'             :hate,
                      'HARASSMENT'       :harassment,
                      'SEXUAL'           :sexual,
                      'DANGEROUS'        :dangerous}
@@ -135,10 +137,10 @@ st.sidebar.divider()
 st.sidebar.markdown('''2024.05.10 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
 
 # MAIN
-st.title('Pesquisa na WikipédiA')
+st.title('WikipediA Search')
 st.markdown('''
-            Projeto inspirado em [exemplo](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) produzido pelo Google,
-            usando a funcionalidade _Embedding_ da Inteligência Artificial (IA) **Gemini** do Google para ranquear resultados de busca na WikipédiA.
+            Inspired by an [exemplo](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) from Google,
+            using _Embedding_ from Google's Artificial Inteligence (AI) **Gemini** to rerank search results in WikipediA.
 
             _Embedding_ é uma técnica de Processamento de Linguagem Natural (PLN) que converte texto em vetores numéricos,
             capturando significado semântico **&** contexto, de forma que textos com conteúdos semelhantes apresentam _embeddings_ mais próximos,
@@ -147,21 +149,21 @@ st.markdown('''
 st.divider()
 # Chat de Pesquisa:
 chat   =  model.start_chat(enable_automatic_function_calling=False)
-st.subheader('Faça sua pesquina na WikipédiA em português aqui:')
+st.subheader('Search WikipediA from here:')
 for message in st.session_state.messages:
           with      st.chat_message(message['role']):
                     st.markdown(message['content'])
-if query :=    st.chat_input('Faça sua pesquina na WikipédiA em português aqui.'):
+if query :=    st.chat_input('Search WikipediA from here.'):
                     st.session_state.messages.append({'role':'user', 'content':query})
                     with    st.chat_message('user'):
                             st.markdown(query)
                     with    st.chat_message('assistant'):
                             result   =    chat.send_message(instructions.format(query=query))
-                            st.write('Buscando…')
+                            st.write('Searching…')
                             fc       =  result.candidates[0].content.parts[0].function_call
                             fc       =type(fc).to_dict(fc)
                             summaries=  wikipedia_search(**fc['args'])
-                            st.write('Consultas:\n', summaries)
+                            st.write('Consultations:\n', summaries)
                             response = chat.send_message(glm.Content(parts=[glm.Part(
                                        function_response=glm.FunctionResponse(
                                                     name='wikipedia_search', response={'result':summaries}
@@ -171,13 +173,13 @@ if query :=    st.chat_input('Faça sua pesquina na WikipédiA em português aqu
                                                                                             )
                                                                                         )
                             st.markdown(response.text)
-                            # Função             Embedding:
+                            # Função Embedding:
                             def get_embeddings(content:list[str])->np.ndarray:
                                 embeddings = genai.embed_content('models/embedding-001', content, 'SEMANTIC_SIMILARITY')
                                 embds      = embeddings.get('embedding', None)
                                 embds      = np.array(embds).reshape(len(embds),-1)
                                 return embds
-                            # Função     Produto Escalar:
+                            # Função Produto Escalar:
                             def dot_product(a:np.ndarray,  b:np.ndarray):
                                 return (a @ b.T)
                             # Aplicando a Função Embedding:
@@ -186,7 +188,7 @@ if query :=    st.chat_input('Faça sua pesquina na WikipédiA em português aqu
                             # Calculando Pontuação de Similaridade:
                             sim_value      = dot_product(search_res, embedded_query)
                             st.markdown(summaries[np.argmax(sim_value)])
-                            st.write('Ranque:', sim_value[0])
+                            st.write('Rank:', sim_value[0])
                             hyde             =model.generate_content(f'''
                                 Gere resposta hipotética para a busca do usuário usando seu próprio conhecimento.
                                 Assuma que você sabe tudo sobre o tópico. Não use informação factual,
@@ -199,6 +201,6 @@ if query :=    st.chat_input('Faça sua pesquina na WikipédiA em português aqu
                             # Calculando Pontuação de Similaridade para Ranquear os Resultados:
                             sim_value = dot_product(search_res, hyde_res)
                             st.markdown(summaries[np.argmax(sim_value)])
-                            st.write('Rerranqueamento:', sim_value[0])
+                            st.write('Rerank:', sim_value[0])
 st.divider()
-st.toast('Pesquise!', icon='🔍')
+st.toast('Search!', icon='🔍')
