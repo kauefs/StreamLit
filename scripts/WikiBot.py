@@ -135,9 +135,16 @@ st.sidebar.divider()
 st.sidebar.markdown('''2024.05.10 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
 
 # MAIN
-st.image(   'https://pt.wikipedia.org/static/images/icons/wikipedia.png')
-st.markdown('[![Wikipedia](https://img.shields.io/badge/WikipediA_Donation-636466?style=flat&logo=wikipedia&logoColor=000000&labelColor=FFFFFF&color=939598)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=US&uselang=en)')
-st.title(   'WikipediA Search')
+with st.container():
+    Cols = st.columns(2)
+    with Cols[0]:
+        st.image(   'https://pt.wikipedia.org/static/images/icons/wikipedia.png')
+        st.markdown('[![Wikipedia](https://img.shields.io/badge/WikipediA_Donation-636466?style=flat&logo=wikipedia&logoColor=000000&labelColor=FFFFFF&color=939598)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=US&uselang=en)')
+    with Cols[1]:
+        st.title(   'WikipediA Search')
+# st.image(   'https://pt.wikipedia.org/static/images/icons/wikipedia.png')
+# st.markdown('[![Wikipedia](https://img.shields.io/badge/WikipediA_Donation-636466?style=flat&logo=wikipedia&logoColor=000000&labelColor=FFFFFF&color=939598)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=US&uselang=en)')
+# st.title(   'WikipediA Search')
 # Chat:
 chat   =  model.start_chat(history=[], enable_automatic_function_calling=False)
 for message in st.session_state.messages:
