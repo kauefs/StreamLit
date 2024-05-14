@@ -152,9 +152,9 @@ if query :=    st.chat_input('Search WikipediA'):
                     with    st.chat_message('user'):
                             st.markdown(query)
                     with    st.chat_message('assistant'):
-                            res      =    chat.send_message(instructions.format(query=query))
+                            resul    =    chat.send_message(instructions.format(query=query))
                             st.write('Searching… please wait…')
-                            fc       =     res.candidates[0].content.parts[0].function_call
+                            fc       =  result.candidates[0].content.parts[0].function_call
                             fc       =type(fc).to_dict(fc)
                             summaries=  wikipedia_search(**fc['args'])
                             st.write('Summaries:\n', summaries)
