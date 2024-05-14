@@ -22,7 +22,6 @@ st.sidebar.markdown('''
 [![Python](  https://img.shields.io/badge/-3-4584B6?logo=python&logoColor=FFDE57&labelColor=4584B6&color=646464)](https://www.python.org/)
 [![License]( https://img.shields.io/github/license/kauefs/StreamLit?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
             ''')
-st.sidebar.text(     '1 May 2024')
 st.sidebar.divider(              )
 st.sidebar.subheader('DashBoard' )
 hour       = st.sidebar.slider('Hour:', 0, 23, 9)
@@ -33,7 +32,7 @@ table      = st.sidebar.empty()
 # Filtered Rides PlaceHolder:
 success    = st.sidebar.empty()
 st.sidebar.divider()
-st.sidebar.markdown('''©2024™ [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/)''')
+st.sidebar.markdown('''2024.05.01 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
 # MAIN:
 st.divider()
 st.title('Uber PickUps in NYC')
