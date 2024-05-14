@@ -15,6 +15,7 @@ def load_data(nrows):
     return data
 data=load_data(1000)
 # SIDE:
+st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ')
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](                                 https://github.com/kauefs/)
 [![Medium](  https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](                                 https://medium.com/@kauefs)
