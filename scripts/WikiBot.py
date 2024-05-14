@@ -88,10 +88,10 @@ Busca do usuário: {query}
                     '''
 
 # SIDE
-st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
-st.sidebar.markdown('[![Gemini](   https://img.shields.io/badge/Gemini-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=BR&uselang=pt-br)')
 st.sidebar.image(   'https://pt.wikipedia.org/static/images/icons/wikipedia.png')
 st.sidebar.markdown('[![Wikipedia](https://img.shields.io/badge/WikipediA_Donation-636466?style=flat&logo=wikipedia&logoColor=000000&labelColor=FFFFFF&color=939598)](https://donate.wikimedia.org/w/index.php?title=Special:LandingPage&country=US&uselang=en)')
+st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
+st.sidebar.markdown('[![Gemini](   https://img.shields.io/badge/Gemini-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
 st.sidebar.title(   'AI Google Gemini')
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
