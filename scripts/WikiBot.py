@@ -92,7 +92,6 @@ Here is the user's query: {query}
 st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.markdown('[![Gemini](   https://img.shields.io/badge/Gemini-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
 st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ')
-st.sidebar.divider(               )
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
 [![Medium](  https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
