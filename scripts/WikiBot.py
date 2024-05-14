@@ -8,7 +8,7 @@ import  streamlit           as   st
 
 st.set_page_config(page_title='SEARCH', page_icon='🔎', layout='wide', initial_sidebar_state='auto')
 
-# Iniciando Sessão:
+# Session Start:
 st.session_state.setdefault(None)
 if      'messages' not in st.session_state:st.session_state.messages=[]
 if 'last_messages' not in st.session_state:st.session_state.last_messages=''
@@ -17,8 +17,8 @@ if 'last_messages' not in st.session_state:st.session_state.last_messages=''
 api_key = st.secrets['api_key']
 genai.configure(api_key=api_key)
 
-# CONFIGURAÇÕES GERAIS
-# Função de Busca na WikePédia:
+# CONFIGS
+# Search Function:
 def wikipedia_search(search_queries:list[str])->list[str]:
     '''WikipediA research returning most relevant pages.'''
     topics         = 3
@@ -63,8 +63,8 @@ def wikipedia_search(search_queries:list[str])->list[str]:
     print(f'Sources:')
     for url in search_urls            :print('  ', url)
     return summary_results
-# Buscas Suplementares:
-# Passando Instruções ao Modelo:
+# Suplementary Search:
+# Instructions:
 instructions      ='''
 Acesso a API da WikipédiA para responder buscas.
 Gerar lista de possíveis resultados que possam responder a buscas.
@@ -101,21 +101,21 @@ st.sidebar.markdown('''
 [![License]( https://img.shields.io/badge/Apache--2.0-D22128?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
                     ''')
 st.sidebar.divider()
-# Configuração do Modelo Generativo:
+# Generative Model Config:
 st.sidebar.info(   'Generation Config')
 temperature       = st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
 top_p             = st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
 top_k             = st.sidebar.number_input('Top K:'            ,  1,     100,    3)
 max_output_tokens = st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
 st.sidebar.divider()
-# Configurações de Segurança:
+# Safety Settings:
 st.sidebar.success('Safety Settings')
 seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
 hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
 harassment        = st.sidebar.selectbox(   'Harassment:', seg, index=0)
 sexual            = st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
 dangerous         = st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
-# Configurando Modelo:
+# Building Model:
 model_name        =  'gemini-pro'
 generation_config = {'candidate_count'  :    1 ,
                      'temperature'      : temperature,
@@ -128,7 +128,6 @@ safety_settings   = {'HATE'             :hate,
                      'SEXUAL'           :sexual,
                      'DANGEROUS'        :dangerous}
 tools             = [wikipedia_search]
-# Construindo Modelo:
 model             =genai.GenerativeModel(model_name       =     model_name,
                                          generation_config=generation_config,
                                          safety_settings  =    safety_settings,
@@ -138,18 +137,10 @@ st.sidebar.markdown('''2024.05.10 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
 
 # MAIN
 st.title('WikipediA Search')
-st.markdown('''
-            Inspired by an [example](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) from Google,
-            using _Embedding_ from Google's Artificial Inteligence (AI) **Gemini** to rerank search results in WikipediA.
-
-            Text embeddings are a natural language processing (NLP) technique that converts text into numerical vectors,
-            capturing semantic meaning **&** context which results in text with similar meanings having closer embeddings,
-            alowing to compare different texts **&** understand how they relate.
-            ''')
-st.divider()
-# Chat de Pesquisa:
-chat   =  model.start_chat(enable_automatic_function_calling=False)
+# st.divider()
 st.subheader('Search WikipediA from here:')
+# Chat:
+chat   =  model.start_chat(enable_automatic_function_calling=False)
 for message in st.session_state.messages:
           with      st.chat_message(message['role']):
                     st.markdown(message['content'])
@@ -173,19 +164,19 @@ if query :=    st.chat_input('Search WikipediA from here.'):
                                                                                             )
                                                                                         )
                             st.markdown(response.text)
-                            # Função Embedding:
+                            # Embedding Function:
                             def get_embeddings(content:list[str])->np.ndarray:
                                 embeddings = genai.embed_content('models/embedding-001', content, 'SEMANTIC_SIMILARITY')
                                 embds      = embeddings.get('embedding', None)
                                 embds      = np.array(embds).reshape(len(embds),-1)
                                 return embds
-                            # Função Produto Escalar:
+                            # Scalar Product:
                             def dot_product(a:np.ndarray,  b:np.ndarray):
                                 return (a @ b.T)
-                            # Aplicando a Função Embedding:
+                            # Apllying Embedding Function:
                             search_res     = get_embeddings(summaries)
                             embedded_query = get_embeddings([query])
-                            # Calculando Pontuação de Similaridade:
+                            # Calculating Similarity Score:
                             sim_value      = dot_product(search_res, embedded_query)
                             st.markdown(summaries[np.argmax(sim_value)])
                             st.write('Rank:', sim_value[0])
@@ -196,9 +187,9 @@ if query :=    st.chat_input('Search WikipediA from here.'):
                                 query: {query}
                                                                       ''')
                             st.write(hyde.text)
-                            # Embedding a resposta hipotética para comparar com os resultados da busca:
+                            # Embedding Hypothetical Answer to Compare Results:
                             hyde_res  = get_embeddings([hyde.text])
-                            # Calculando Pontuação de Similaridade para Ranquear os Resultados:
+                            # Calculating Similarity Score to Rerank Results:
                             sim_value = dot_product(search_res, hyde_res)
                             st.markdown(summaries[np.argmax(sim_value)])
                             st.write('Rerank:', sim_value[0])
