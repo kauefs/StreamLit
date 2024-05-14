@@ -152,7 +152,7 @@ if query :=    st.chat_input('Search WikipediA'):
                     with    st.chat_message('user'):
                             st.markdown(query)
                     with    st.chat_message('assistant'):
-                            resul    =    chat.send_message(instructions.format(query=query))
+                            result   =    chat.send_message(instructions.format(query=query))
                             st.write('Searching… please wait…')
                             fc       =  result.candidates[0].content.parts[0].function_call
                             fc       =type(fc).to_dict(fc)
@@ -185,23 +185,23 @@ if query :=    st.chat_input('Search WikipediA'):
                             def dot_product(a:np.ndarray,  b:np.ndarray):
                                 return (a @ b.T)
                             # Getting Embeddings:
-                                embed_query = get_embeddings([query])
-                                embed_hyde  = get_embeddings([hyde.text])
-                                embed_search= get_embeddings(summaries)
+                            embed_query     = get_embeddings([query])
+                            embed_hyde      = get_embeddings([hyde.text])
+                            embed_search    = get_embeddings(summaries)
                             # Similarity Score:
                             sim_value_query = dot_product(embed_search, embed_query)
                             sim_value_hyde  = dot_product(embed_search, embed_hyde )
                             # Query Rank:
-                            st.write('  Query Scores:\n',                   sim_value_query)
-                            st.write('\n  Ordered Query Scores:\n', np.sort(sim_value_query, axis=0)[::-1])
+                            st.write('  Query Scores:',                       sim_value_query)
+                            st.write('  Ordered Query Scores:',       np.sort(sim_value_query, axis=0)[::-1])
                             # Selecting Query Best Candidate:
-                            st.write('\n  Rank:', np.argmax(sim_value_query), sim_value_query[0],'\n')
+                            st.write('  Rank:',   np.argmax(sim_value_query), sim_value_query[0],)
                             st.markdown(summaries[np.argmax(sim_value_query)])
                             # Query Rank:
-                            st.write('  Query Scores:\n',                   sim_value_hyde)
-                            st.write('\n  Ordered Query Scores:\n', np.sort(sim_value_hyde, axis=0)[::-1])
+                            st.write('  Query Scores:',                       sim_value_hyde)
+                            st.write('  Ordered Hyde Scores:',        np.sort(sim_value_hyde, axis=0)[::-1])
                             # Selecting Hyde Best Candidate:
-                            st.write('\n  Rank:', np.argmax(sim_value_hyde), sim_value_hyde[0],'\n')
+                            st.write('  Rank:',   np.argmax(sim_value_hyde),  sim_value_hyde[0],)
                             st.markdown(summaries[np.argmax(sim_value_hyde)])
 st.divider()
 st.toast('Search!', icon='🔍')
