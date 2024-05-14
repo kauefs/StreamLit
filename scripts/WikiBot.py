@@ -139,7 +139,7 @@ st.sidebar.markdown('''2024.05.10 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
 # MAIN
 st.title('WikipediA Search')
 st.markdown('''
-            Inspired by an [exemplo](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) from Google,
+            Inspired by an [example](https://github.com/google-gemini/cookbook/blob/main/examples/Search_reranking_using_embeddings.ipynb) from Google,
             using _Embedding_ from Google's Artificial Inteligence (AI) **Gemini** to rerank search results in WikipediA.
 
             _Embedding_ é uma técnica de Processamento de Linguagem Natural (PLN) que converte texto em vetores numéricos,
