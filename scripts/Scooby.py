@@ -1,5 +1,5 @@
 # https://github.com/IAmCristiano/GokuAI/
-# <a target="_blank" href="https://icons8.com/icon/tlzsVoeHOw9V/scooby-doo">Scooby Doo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+# <a target=_blank href=https://icons8.com/icon/tlzsVoeHOw9V/scooby-doo>Scooby Doo</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
 
 import streamlit           as st
 import google.generativeai as genai
