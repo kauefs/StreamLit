@@ -1,10 +1,8 @@
 # https://github.com/IAmCristiano/GokuAI/
 # <a target="_blank" href="https://icons8.com/icon/24563/indiana-jones">Indiana Jones</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
-import  textwrap
 import  streamlit           as   st
 import  google.generativeai as   genai
-from   IPython.display    import Markdown
 
 st.set_page_config(page_title='Indiana Jones', page_icon='IMG/icons8-indiana-jones.svg', layout='wide', initial_sidebar_state='collapsed')
 
