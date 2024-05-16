@@ -9,8 +9,10 @@ st.set_page_config(page_title='Scooby-Doo', page_icon='img/icons8-scooby-doo.svg
 
 #  Session State Start:
 st.session_state.setdefault(None)
-if      'messages' not in st.session_state:st.session_state.messages=[]
-if 'last_messages' not in st.session_state:st.session_state.last_messages=''
+if      'message' not in st.session_state:st.session_state.messages=[]
+if      'api_key' not in st.session_state:st.session_state.api_key =True
+if      'model'   not in st.session_state:st.session_state.model   =True
+if      'chat'    not in st.session_state:st.session_state.chat    =True
 
 # API-KEY
 api_key = st.secrets['api_key']
