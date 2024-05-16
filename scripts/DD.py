@@ -8,8 +8,10 @@ st.set_page_config(page_title='Dungeons&Dragons', page_icon='https://img.icons8.
 
 #  Session State Start:
 st.session_state.setdefault(None)
-if      'messages' not in st.session_state:st.session_state.messages=[]
-if 'last_messages' not in st.session_state:st.session_state.last_messages=''
+if      'message' not in st.session_state:st.session_state.messages=[]
+if      'api_key' not in st.session_state:st.session_state.api_key =True
+if      'model'   not in st.session_state:st.session_state.model   =True
+if      'chat'    not in st.session_state:st.session_state.chat    =True
 
 # API-KEY
 api_key = st.secrets['api_key']
@@ -24,27 +26,27 @@ st.sidebar.info(    'Dungeous')
 st.sidebar.write(   '&'       )
 st.sidebar.success( 'Dragons' )
 # Building Model:
-model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  : 1,
-                     'temperature'      : 0.75,
-                     'top_p'            : 0.95,
-                     'top_k'            : 3,
-                     'stop_sequences'   : None,
-                     'max_output_tokens': 1024}
-safety_settings   = {'HATE'             :'BLOCK_NONE',
-                     'HARASSMENT'       :'BLOCK_NONE',
-                     'SEXUAL'           :'BLOCK_NONE',
-                     'DANGEROUS'        :'BLOCK_NONE'}
-tools             =   None
+model_name        = 'gemini-pro'
+generation_config ={'candidate_count'  : 1,
+                    'temperature'      : 0.75,
+                    'top_p'            : 0.95,
+                    'top_k'            : 3,
+                    'stop_sequences'   : None,
+                    'max_output_tokens': 1024}
+safety_settings   ={'HATE'             :'BLOCK_NONE',
+                    'HARASSMENT'       :'BLOCK_NONE',
+                    'SEXUAL'           :'BLOCK_NONE',
+                    'DANGEROUS'        :'BLOCK_NONE'}
+tools             =  None
 system_instruction='''
-                      You are the Dungeon Master character from the animated television series Dungeons & Dragons.
-                      Always reply friendly and coherent to the character you are playing.
+                     You are the Dungeon Master character from the animated television series Dungeons & Dragons.
+                     Always reply friendly and coherent to the character you are playing.
 
-                      The Dungeon Master is a mentor to a group of young friends, providing important advices and help for life matters,
-                      often in a cryptic manner, but supplying clues in numerous opportunities so that the message can be unsderstood.
+                     The Dungeon Master is a mentor to a group of young friends, providing important advices and help for life matters,
+                     often in a cryptic manner, but supplying clues in numerous opportunities so that the message can be unsderstood.
 
 
-                      {query}
+                     {query}
 
                    '''
 model             =genai.GenerativeModel(model_name        =     model_name,
@@ -65,26 +67,26 @@ st.sidebar.markdown('''
 # MAIN
 
 st.markdown('''![D&D](https://upload.wikimedia.org/wikipedia/en/d/d7/Dungeons_and_Dragons_DVD_boxset_art.jpg)''')
-# Chat:
 st.divider()
-chat    =                 model.start_chat(enable_automatic_function_calling=False)
-res     =                  chat.send_message(system_instruction.format(query='Start conversation.'))
-res_text=                   res._result.candidates[0].content.parts[0].text
-st.write('Dangeon Master:', res_text)
-
-for message in st.session_state.messages:
-    with       st.chat_message(message['role']):
-               st.markdown(message['content'])
-if query :=    st.chat_input('Type message here…'):
-               st.session_state.messages.append({'role':'user','content':query})
-          with st.chat_message('user'):
-               st.markdown(query)
-
-          with st.chat_message('assistant'):
-               response=  chat.send_message(system_instruction.format(query=query))
-
-          response                  =     chat.send_message(query)
-          response_text             = response._result.candidates[0].content.parts[0].text
-          st.write('Dungeon Master:', response_text)
+# Chat:
+chat            =model.start_chat(enable_automatic_function_calling=False)
+start           = chat.send_message(system_instruction.format(query='Start conversation'))
+ai_avatar       ='🧙‍♂️'
+hm_avatar       ='🧑🏻'
+if 'message' not in st.session_state:
+        with  st.chat_message('ai', avatar='🧙‍♂️'):
+              st.write(start.text)
+for message    in st.session_state.messages:
+        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        with       st.chat_message(message['role'], avatar=avatar):
+                   st.write(message['content'])
+if query       :=  st.chat_input(placeholder='Type message here…', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human'):
+                   st.write(query)
+        st.session_state.messages.append({'role':'human','content':query})
+        with       st.chat_message('ai'):
+                   response= chat.send_message(system_instruction.format(query=query))
+        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.write(response.text)
 
 st.toast('Uni!', icon='🦄')
