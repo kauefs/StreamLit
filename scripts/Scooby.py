@@ -87,7 +87,7 @@ if query := st.chat_input('Digite aqui sua mensagem…'):
                  st.markdown(query)
 
             with st.chat_message('assistant'):
-                response=   chat.send_message(system_instruction.format(query=query))
+                response        =     chat.send_message(system_instruction.format(query=query))
 
             response            =     chat.send_message(query)
             response_text       = response._result.candidates[0].content.parts[0].text
