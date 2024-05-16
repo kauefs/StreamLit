@@ -8,11 +8,13 @@ st.set_page_config(page_title='Yoda', page_icon='https://img.icons8.com/badges/4
 
 #  Session State Start:
 st.session_state.setdefault(None)
-if      'messages' not in st.session_state:st.session_state.messages=[]
-if 'last_messages' not in st.session_state:st.session_state.last_messages=''
+if      'message' not in st.session_state:st.session_state.messages=[]
+if      'api_key' not in st.session_state:st.session_state.api_key =True
+if      'model'   not in st.session_state:st.session_state.model   =True
+if      'chat'    not in st.session_state:st.session_state.chat    =True
 
 # API-KEY
-api_key = st.secrets['api_key']
+api_key  =  st.secrets['api_key']
 genai.configure(api_key=api_key)
 
 # SIDE
@@ -105,26 +107,26 @@ st.sidebar.markdown('''
 
 # MAIN
 st.markdown('![Yoda](https://static.wikia.nocookie.net/starwars/images/c/c3/Yoda_TPM_RotS.png)')
-# Chat:
 st.divider()
-chat    =              model.start_chat(enable_automatic_function_calling=False)
-res     =               chat.send_message(system_instruction.format(query='Start conversation.'))
-res_text=                res._result.candidates[0].content.parts[0].text
-st.write('Master Yoda:', res_text)
+# Chat:
+chat            =model.start_chat(enable_automatic_function_calling=False)
+start           = chat.send_message(system_instruction.format(query='Start conversation'))
+ai_avatar       ='🟢'
+hm_avatar       ='🧑🏻'
+if 'message' not in st.session_state:
+        with  st.chat_message('ai', avatar='🟢'):
+              st.write(start.text)
+for message    in st.session_state.messages:
+        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        with       st.chat_message(message['role'], avatar=avatar):
+                   st.write(message['content'])
+if query       :=  st.chat_input(placeholder='Type message here…', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human'):
+                   st.write(query)
+        st.session_state.messages.append({'role':'human','content':query})
+        with       st.chat_message('ai'):
+                   response= chat.send_message(query)
+        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.write(response.text)
 
-for message     in        st.session_state.messages:
-    with                  st.chat_message(message['role']):
-                          st.markdown(message['content'])
-if query        :=        st.chat_input(placeholder='Type message here…', max_chars=None, disabled=False, on_submit=None):
-        st.session_state.messages.append({'role':'user','content':query})
-        with st.chat_message('user'):
-             st.markdown(query)
-
-        with st.chat_message('assistant'):
-            response=   chat.send_message(system_instruction.format(query=query))
-
-            response               =     chat.send_message(query)
-            response_text          = response._result.candidates[0].content.parts[0].text
-            st.write('Master Yoda:', response_text)
-
-st.toast('Do or Do Not!', icon='🥷')
+st.toast('Do or Do Not!', icon='🟢')
