@@ -94,17 +94,17 @@ for message  in  st.session_state.messages:
                  st.markdown(message['content'])
 if query :=      st.chat_input('Digite sua mensagem aqui…'):
                  st.session_state.messages.append({'role':'user','content':query})
-            with st.chat_message('user'):
-                 st.markdown(query)
+                 with st.chat_message('user'):
+                      st.markdown(query)
 
-            with st.chat_message('assistant'):
-                response=   chat.send_message(system_instruction.format(query=query))
+                 with st.chat_message('assistant'):
+                         response    =     chat.send_message(system_instruction.format(query=query))
 
-                if  ss in query:
+                 if  ss in query:
                     st.write('Ei, não é legal falar assim! Vamos conversar sobre outra coisa.')
 
-            response            =     chat.send_message(query)
-            response_text       = response._result.candidates[0].content.parts[0].text
-            st.write('Pica-Pau:', response_text)
+                 response            =     chat.send_message(query)
+                 response_text       = response._result.candidates[0].content.parts[0].text
+                 st.write('Pica-Pau:', response_text)
 
 st.toast('Pica-Pau!', icon='🐤')
