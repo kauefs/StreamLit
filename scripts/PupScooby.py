@@ -1,6 +1,6 @@
 # https://github.com/IAmCristiano/GokuAI/
-# <a target="_blank" href="https://icons8.com/icon/tlzsVoeHOw9V/scooby-doo">Scooby Doo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-# 'https://static.wikia.nocookie.net/disneyfanon/images/5/56/Scooby_Doo_Clipart_APNSD.png'
+# <a target=_blank href=https://icons8.com/icon/tlzsVoeHOw9V/scooby-doo>Scooby Doo</a> icon by <a target=_blank href="https://icons8.com/>Icons8</a>
+# https://static.wikia.nocookie.net/disneyfanon/images/5/56/Scooby_Doo_Clipart_APNSD.png
 
 import streamlit           as st
 import google.generativeai as genai
@@ -77,24 +77,24 @@ st.markdown('''![PupScooby](https://github.com/kauefs/StreamLit/raw/%40/img/PupS
 st.title(   'A Pup Named Scooby-Doo!')
 
 # Chat:
-chat     =    model.start_chat(enable_automatic_function_calling=False)
-res      =     chat.send_message(system_instruction.format(query='Faça uma breve saudação.'))
-res_text = res._result.candidates[0].content.parts[0].text
+chat    =         model.start_chat(enable_automatic_function_calling=False)
+res     =          chat.send_message(system_instruction.format(query='Faça uma breve saudação.'))
+res_text=           res._result.candidates[0].content.parts[0].text
 st.write('Scooby:', res_text)
 
-for message  in  st.session_state.messages:
-    with         st.chat_message(message['role']):
-                 st.markdown(message['content'])
-if query := st.chat_input('Digite aqui sua mensagem…'):
-            st.session_state.messages.append({'role':'user','content':query})
-            with st.chat_message('user'):
-                 st.markdown(query)
+for message      in  st.session_state.messages:
+    with             st.chat_message(message['role']):
+                     st.markdown(message['content'])
+if query :=          st.chat_input('Digite aqui sua mensagem…'):
+                     st.session_state.messages.append({'role':'user','content':query})
+            with     st.chat_message('user'):
+                     st.markdown(query)
 
-            with st.chat_message('assistant'):
-                response=   chat.send_message(system_instruction.format(query=query))
+            with     st.chat_message('assistant'):
+                response      =     chat.send_message(system_instruction.format(query=query))
 
-            response            =     chat.send_message(query)
-            response_text       = response._result.candidates[0].content.parts[0].text
+            response          =     chat.send_message(query)
+            response_text     = response._result.candidates[0].content.parts[0].text
             st.write('Scooby:', response_text)
 
 st.toast('Scooby!', icon='🐶')
