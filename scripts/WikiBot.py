@@ -92,47 +92,47 @@ Here is the user's query: {query}
 st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.markdown('[![Gemini](   https://img.shields.io/badge/Gemini-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
 st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ')
+st.sidebar.divider()
+# Generative Model Config:
+st.sidebar.info(    'Generation Config')
+temperature       =  st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
+top_p             =  st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
+top_k             =  st.sidebar.number_input('Top K:'            ,  1,     100,    3)
+max_output_tokens =  st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
+st.sidebar.divider()
+# Safety Settings:
+st.sidebar.success('Safety Settings')
+seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
+hate              =  st.sidebar.selectbox(   'Hate:'      , seg, index=0)
+harassment        =  st.sidebar.selectbox(   'Harassment:', seg, index=0)
+sexual            =  st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
+dangerous         =  st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
+# Building Model:
+model_name        = 'gemini-pro'
+generation_config ={'candidate_count'  :    1 ,
+                    'temperature'      : temperature,
+                    'top_p'            : top_p,
+                    'top_k'            : top_k,
+                    'stop_sequences'   : None ,
+                    'max_output_tokens': max_output_tokens}
+safety_settings   ={'HATE'             :hate,
+                    'HARASSMENT'       :harassment,
+                    'SEXUAL'           :sexual,
+                    'DANGEROUS'        :dangerous}
+tools             =[wikipedia_search]
+model             =genai.GenerativeModel(model_name       =     model_name,
+                                         generation_config=generation_config,
+                                         safety_settings  =    safety_settings,
+                                         tools            =    tools )
+st.sidebar.divider()
 st.sidebar.markdown('''
 [![GitHub](  https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
 [![Medium](  https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
 [![LinkedIn](https://img.shields.io/badge/-0077B5?logo=linkedin&logoColor=FFFFFF)](https://www.linkedin.com/in/kauefs/)
 [![Python](  https://img.shields.io/badge/-3-4584B6?logo=python&logoColor=FFDE57&labelColor=4584B6&color=646464)](https://www.python.org/)
 [![License]( https://img.shields.io/badge/Apache--2.0-D22128?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
-                    ''')
-st.sidebar.divider()
-# Generative Model Config:
-st.sidebar.info(   'Generation Config')
-temperature       = st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
-top_p             = st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
-top_k             = st.sidebar.number_input('Top K:'            ,  1,     100,    3)
-max_output_tokens = st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
-st.sidebar.divider()
-# Safety Settings:
-st.sidebar.success('Safety Settings')
-seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
-hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
-harassment        = st.sidebar.selectbox(   'Harassment:', seg, index=0)
-sexual            = st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
-dangerous         = st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
-# Building Model:
-model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  :    1 ,
-                     'temperature'      : temperature,
-                     'top_p'            : top_p,
-                     'top_k'            : top_k,
-                     'stop_sequences'   : None ,
-                     'max_output_tokens': max_output_tokens}
-safety_settings   = {'HATE'             :hate,
-                     'HARASSMENT'       :harassment,
-                     'SEXUAL'           :sexual,
-                     'DANGEROUS'        :dangerous}
-tools             = [wikipedia_search]
-model             =genai.GenerativeModel(model_name       =     model_name,
-                                         generation_config=generation_config,
-                                         safety_settings  =    safety_settings,
-                                         tools            =    tools )
-st.sidebar.divider()
-st.sidebar.markdown('''2024.05.10 &copy; 2024 ƊⱭȾɅViƧi🧿Ƞ &trade;''')
+
+2024.05.10 &copy; 2024 [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/) &trade;''')
 
 # MAIN
 with st.container():
