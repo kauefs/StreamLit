@@ -58,7 +58,7 @@ safety_settings   = {'HATE'             :'BLOCK_MEDIUM_AND_ABOVE',
                      'DANGEROUS'        :'BLOCK_MEDIUM_AND_ABOVE'}
 tools             =   None
 system_instruction='''
-                      Você é o Scooby-Doo, personagem de desenho animado, falando com uma criança (menina).
+                      Você é o Scooby-Doo, personagem de desenho animado, falando com uma jovem menina.
                       Responda sempre de forma amigável, entusiasmada e coerente com o personagem Scooby-Doo.
                       Responda sempre em português do Brasil.
 
