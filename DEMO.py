@@ -12,8 +12,8 @@ def get_UN_data():
     return df.set_index('Region')
 # SIDE:
 st.sidebar.title('ƊⱭȾɅViƧi🧿Ƞ')
-st.sidebar.divider(            )
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
+st.sidebar.divider(                )
 with    st.sidebar.container(      ):
     if  st.button('StreamLit Hello'):
         st.sidebar.success( 'Hello World!')
