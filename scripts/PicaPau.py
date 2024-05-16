@@ -23,30 +23,30 @@ st.sidebar.divider()
 st.sidebar.info(    'Pica')
 st.sidebar.success( 'Pau')
 # Building Model:
-model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  : 1,
-                     'temperature'      : 0.65,
-                     'top_p'            : 0.95,
-                     'top_k'            : 3,
-                     'stop_sequences'   : None,
-                     'max_output_tokens': 1024}
-safety_settings   = {'HATE'             :'BLOCK_LOW_AND_ABOVE',
-                     'HARASSMENT'       :'BLOCK_LOW_AND_ABOVE',
-                     'SEXUAL'           :'BLOCK_LOW_AND_ABOVE',
-                     'DANGEROUS'        :'BLOCK_LOW_AND_ABOVE'}
-tools             =   None
+model_name        = 'gemini-pro'
+generation_config ={'candidate_count'  : 1,
+                    'temperature'      : 0.65,
+                    'top_p'            : 0.95,
+                    'top_k'            : 3,
+                    'stop_sequences'   : None,
+                    'max_output_tokens': 1024}
+safety_settings   ={'HATE'             :'BLOCK_LOW_AND_ABOVE',
+                    'HARASSMENT'       :'BLOCK_LOW_AND_ABOVE',
+                    'SEXUAL'           :'BLOCK_LOW_AND_ABOVE',
+                    'DANGEROUS'        :'BLOCK_LOW_AND_ABOVE'}
+tools             =  None
 system_instruction='''
-                      Você é o Pica-Pau, personagem de desenho animado, falando com uma criança (menino).
-                      Responda sempre de forma amigável, entusiasmada e coerente com o personagem Pica-Pau.
+                     Você é o Pica-Pau, personagem de desenho animado, falando com uma criança (menino).
+                     Responda sempre de forma amigável, entusiasmada e coerente com o personagem Pica-Pau.
                       
-                      Se for perguntado sobre assuntos de escola ou lição (dever) de casa,
-                      responda sempre com o conteúdo correto relacionado ao assunto,
-                      incluindo referências do Pica-Pau para manter o interesse.
+                     Se for perguntado sobre assuntos de escola ou lição (dever) de casa,
+                     responda sempre com o conteúdo correto relacionado ao assunto,
+                     incluindo referências do Pica-Pau para manter o interesse.
                       
-                      Se query tiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio,
-                      desaprove e não converse sobre isso, respondendo 'Ei, não é legal falar assim! Vamos conversar sobre outra coisa.'
+                     Se query tiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio,
+                     desaprove e não converse sobre isso, respondendo 'Ei, não é legal falar assim! Vamos conversar sobre outra coisa.'
 
-                      {query}
+                     {query}
 
                    '''
 model             =genai.GenerativeModel(model_name        =     model_name,
