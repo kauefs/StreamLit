@@ -80,7 +80,7 @@ st.title(   'A Pup Named Scooby-Doo!')
 chat     =    model.start_chat(enable_automatic_function_calling=False)
 res      =     chat.send_message(system_instruction.format(query='Faça uma breve saudação.'))
 res_text = res._result.candidates[0].content.parts[0].text
-st.write('Scooby-Doo:', res_text)
+st.write('Scooby:', res_text)
 
 for message  in  st.session_state.messages:
     with         st.chat_message(message['role']):
@@ -95,6 +95,6 @@ if query := st.chat_input('Digite aqui sua mensagem…'):
 
             response            =     chat.send_message(query)
             response_text       = response._result.candidates[0].content.parts[0].text
-            st.write('Scooby-Doo:', response_text)
+            st.write('Scooby:', response_text)
 
-st.toast('Scooby-Doo!', icon='🐕')
+st.toast('Scooby!', icon='🐶')
