@@ -24,37 +24,37 @@ st.sidebar.divider()
 st.sidebar.info(    'A Pup Named')
 st.sidebar.success( 'Scooby-Doo' )
 # Building Model:
-model_name        =  'gemini-pro'
-generation_config = {'candidate_count'  : 1,
-                     'temperature'      : 0.75,
-                     'top_p'            : 0.95,
-                     'top_k'            : 3,
-                     'stop_sequences'   : None,
-                     'max_output_tokens': 1024}
-safety_settings   = {'HATE'             :'BLOCK_MEDIUM_AND_ABOVE',
-                     'HARASSMENT'       :'BLOCK_MEDIUM_AND_ABOVE',
-                     'SEXUAL'           :'BLOCK_MEDIUM_AND_ABOVE',
-                     'DANGEROUS'        :'BLOCK_MEDIUM_AND_ABOVE'}
-tools             =   None
+model_name        = 'gemini-pro'
+generation_config ={'candidate_count'  : 1,
+                    'temperature'      : 0.75,
+                    'top_p'            : 0.95,
+                    'top_k'            : 3,
+                    'stop_sequences'   : None,
+                    'max_output_tokens': 1024}
+safety_settings   ={'HATE'             :'BLOCK_MEDIUM_AND_ABOVE',
+                    'HARASSMENT'       :'BLOCK_MEDIUM_AND_ABOVE',
+                    'SEXUAL'           :'BLOCK_MEDIUM_AND_ABOVE',
+                    'DANGEROUS'        :'BLOCK_MEDIUM_AND_ABOVE'}
+tools             =  None
 system_instruction='''
-                      Você é o Scooby-Doo, personagem de desenho animado, falando com a Daphne.
-                      Responda sempre de forma amigável, entusiasmada e coerente com o personagem Scooby-Doo.
-                      Responda sempre em português do Brasil.
+                     Você é o Scooby-Doo, personagem de desenho animado, falando com a Daphne.
+                     Responda sempre de forma amigável, entusiasmada e coerente com o personagem Scooby-Doo.
+                     Responda sempre em português do Brasil.
 
-                      Se for perguntado sobre assuntos de escola ou lição (dever) de casa,
-                      responda sempre com o conteúdo correto relacionado ao assunto,
-                      incluindo referências do Scooby-Doo para manter o interesse.
+                     Se for perguntado sobre assuntos de escola ou lição (dever) de casa,
+                     responda sempre com o conteúdo correto relacionado ao assunto,
+                     incluindo referências do Scooby-Doo para manter o interesse.
 
-                      Lembre-se que o Scooby-Doo e seu inseparável amigo Salsicha gostam muito de comer.
-                      Você então conhece muitas receitas e também entende bastante sobre mesa posta.
+                     Lembre-se que o Scooby-Doo e seu inseparável amigo Salsicha gostam muito de comer.
+                     Você então conhece muitas receitas e também entende bastante sobre mesa posta.
 
-                      Lembre-se que a Daphne é refinada e chic, conhecendo muito sobre etiqueta e comportamento.
-                      Você também deve entender desse conteúdo para trocar informação com ela.
+                     Lembre-se que a Daphne é refinada e chic, conhecendo muito sobre etiqueta e comportamento.
+                     Você também deve entender desse conteúdo para trocar informação com ela.
                       
-                      Se query tiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio,
-                      desaprove e não converse sobre isso, respondendo 'Ei, não é legal falar assim! Vamos conversar sobre outra coisa.'
+                     Se query tiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio,
+                     desaprove e não converse sobre isso, respondendo 'Ei, não é legal falar assim! Vamos conversar sobre outra coisa.'
 
-                      {query}
+                     {query}
 
                    '''
 model             =genai.GenerativeModel(model_name        =     model_name,
@@ -75,26 +75,26 @@ st.sidebar.markdown('''
 # MAIN
 st.markdown('''![PupScooby](https://github.com/kauefs/StreamLit/raw/%40/img/PupScooby.png)''')
 st.title(   'A Pup Named Scooby-Doo!')
-
+st.divider()
 # Chat:
-chat    =         model.start_chat(enable_automatic_function_calling=False)
-res     =          chat.send_message(system_instruction.format(query='Faça uma breve saudação.'))
-res_text=           res._result.candidates[0].content.parts[0].text
-st.write('Scooby:', res_text)
-
-for message      in  st.session_state.messages:
-    with             st.chat_message(message['role']):
-                     st.markdown(message['content'])
-if query :=          st.chat_input('Digite aqui sua mensagem…'):
-                     st.session_state.messages.append({'role':'user','content':query})
-            with     st.chat_message('user'):
-                     st.markdown(query)
-
-            with     st.chat_message('assistant'):
-                response      =     chat.send_message(system_instruction.format(query=query))
-
-            response          =     chat.send_message(query)
-            response_text     = response._result.candidates[0].content.parts[0].text
-            st.write('Scooby:', response_text)
-
+chat            =model.start_chat(enable_automatic_function_calling=False)
+start           = chat.send_message(system_instruction.format(query='Inicie a conversa'))
+ai_avatar       ='🐶'
+hm_avatar       ='👩'
+if 'message' not in st.session_state:
+        with  st.chat_message('ai', avatar='🐶'):
+              st.write(start.text)
+for message    in st.session_state.messages:
+        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        with       st.chat_message(message['role'], avatar=avatar):
+                   st.write(message['content'])
+if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human'):
+                   st.write(query)
+        st.session_state.messages.append({'role':'human','content':query})
+        with       st.chat_message('ai'):
+                   response= chat.send_message(system_instruction.format(query=query))
+        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.write(response.text)
+  
 st.toast('Scooby!', icon='🐶')
