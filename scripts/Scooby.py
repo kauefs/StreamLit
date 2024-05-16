@@ -27,22 +27,8 @@ st.sidebar.markdown('''
 [![License]( https://img.shields.io/badge/Apache--2.0-D22128?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
                     ''')
 st.sidebar.divider()
-# Generative Model Config:
 st.sidebar.info(   'Scooby')
-# st.sidebar.info(   'Generation Config')
-# temperature       = st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
-# top_p             = st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
-# top_k             = st.sidebar.number_input('Top K:'            ,  1,     100,    3)
-# max_output_tokens = st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
-# st.sidebar.divider()
-# Safety Settings:
 st.sidebar.success('Doo')
-# st.sidebar.success('Safety Settings')
-# seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
-# hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
-# harassment        = st.sidebar.selectbox(   'Harassment:', seg, index=0)
-# sexual            = st.sidebar.selectbox(   'Sexual:'    , seg, index=0)
-# dangerous         = st.sidebar.selectbox(   'Dangerous:' , seg, index=0)
 # Building Model:
 model_name        =  'gemini-pro'
 generation_config = {'candidate_count'  : 1,
@@ -84,8 +70,8 @@ st.sidebar.markdown('''2024.05.15 &copy; 2024 [ƊⱭȾɅViƧi🧿Ƞ](https://dat
 
 # MAIN
 st.image(   'https://upload.wikimedia.org/wikipedia/commons/9/9a/Scooby_doo_logo.png')
+
 # Chat:
-# st.markdown('**Oi, sou o Scooby-Doo, vamos conversar?**')
 st.divider()
 chat     =    model.start_chat(enable_automatic_function_calling=False)
 res      =     chat.send_message(system_instruction.format(query='Inicie a conversa.'))
@@ -102,9 +88,6 @@ if query := st.chat_input('Digite aqui sua mensagem…'):
 
             with st.chat_message('assistant'):
                 response=   chat.send_message(system_instruction.format(query=query))
-
-                # if  ss in query:
-                #     st.write('Ei, não é legal falar assim! Vamos conversar sobre outra coisa.')
 
             response            =     chat.send_message(query)
             response_text       = response._result.candidates[0].content.parts[0].text
