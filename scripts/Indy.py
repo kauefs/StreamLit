@@ -8,8 +8,10 @@ st.set_page_config(page_title='Indiana Jones', page_icon='IMG/icons8-indiana-jon
 
 #  Session State Start:
 st.session_state.setdefault(None)
-if      'messages' not in st.session_state:st.session_state.messages=[]
-if 'last_messages' not in st.session_state:st.session_state.last_messages=''
+if      'message' not in st.session_state:st.session_state.messages=[]
+if      'api_key' not in st.session_state:st.session_state.api_key =True
+if      'model'   not in st.session_state:st.session_state.model   =True
+if      'chat'    not in st.session_state:st.session_state.chat    =True
 
 # API-KEY
 api_key = st.secrets['api_key']
@@ -87,28 +89,27 @@ st.sidebar.markdown('''
 2024.05.15 &copy; 2024 [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/) &trade;''')
 
 # MAIN
-
 st.markdown('''![Indiana Jones](https://images.disneymovieinsiders.com/6a5f34338b5d6d2809d22332629893ae/29fc4360-3592-4361-a6bf-50255a295e4b.jpg)''')
-# Chat:
 st.divider()
-chat     =     model.start_chat(enable_automatic_function_calling=False)
-res      =      chat.send_message(system_instruction.format(query='Inicie a conversa.'))
-res_text =       res._result.candidates[0].content.parts[0].text
-st.write('Indy:',res_text)
-
-for message  in   st.session_state.messages:
-    with          st.chat_message(message['role']):
-                  st.markdown(message['content'])
-if query :=       st.chat_input('Digite aqui sua mensagem…'):
-                  st.session_state.messages.append({'role':'user','content':query})
-            with  st.chat_message('user'):
-                  st.markdown(query)
-
-            with  st.chat_message('assistant'):
-                response=chat.send_message(system_instruction.format(query=query))
-
-            response        =     chat.send_message(query)
-            response_text   = response._result.candidates[0].content.parts[0].text
-            st.write('Indy:', response_text)
+# Chat:
+chat            =model.start_chat(enable_automatic_function_calling=False)
+start           = chat.send_message(system_instruction.format(query='Inicie a conversa'))
+ai_avatar       ='🧔‍♂️'
+hm_avatar       ='🧑🏻'
+if 'message' not in st.session_state:
+        with  st.chat_message('ai', avatar='🧔‍♂️'):
+              st.write(start.text)
+for message    in st.session_state.messages:
+        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        with       st.chat_message(message['role'], avatar=avatar):
+                   st.write(message['content'])
+if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human'):
+                   st.write(query)
+        st.session_state.messages.append({'role':'human','content':query})
+        with       st.chat_message('ai'):
+                   response= chat.send_message(system_instruction.format(query=query))
+        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.write(response.text)
 
 st.toast('Indy!', icon='🪬')
