@@ -29,7 +29,7 @@ st.sidebar.markdown('''
                     ''')
 st.sidebar.divider()
 # Generative Model Config:
-st.sidebar.info(   'Scooby')
+st.sidebar.info(   'A Pup Named')
 # st.sidebar.info(   'Generation Config')
 # temperature       = st.sidebar.slider(      'Temperature:', 0.00,  1.00, 0.65, 0.05)
 # top_p             = st.sidebar.slider(      'Top P:'      , 0.00,  1.00, 0.95, 0.05)
@@ -37,7 +37,7 @@ st.sidebar.info(   'Scooby')
 # max_output_tokens = st.sidebar.number_input('Max OutPut Tokens:',  1,    2048, 1024)
 # st.sidebar.divider()
 # Safety Settings:
-st.sidebar.success('Doo')
+st.sidebar.success('Scooby-Doo')
 # st.sidebar.success('Safety Settings')
 # seg               =   ['BLOCK_NONE','BLOCK_ONLY_HIGH', 'BLOCK_MEDIUM_AND_ABOVE', 'BLOCK_LOW_AND_ABOVE']
 # hate              = st.sidebar.selectbox(   'Hate:'      , seg, index=0)
