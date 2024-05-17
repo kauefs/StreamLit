@@ -1,5 +1,5 @@
 # https://github.com/IAmCristiano/GokuAI/
-# <a target=_blank href="https://icons8.com/icon/32453/woody-woodpecker">Woody Woodpecker</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
+# <a target=_blank href=https://icons8.com/icon/32453/woody-woodpecker>Woody Woodpecker</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
 
 import streamlit           as   st
 import google.generativeai as   genai
@@ -32,7 +32,7 @@ generation_config ={'candidate_count'  : 1,
                     'max_output_tokens': 1024}
 safety_settings   ={'HATE'             :'BLOCK_LOW_AND_ABOVE',
                     'HARASSMENT'       :'BLOCK_LOW_AND_ABOVE',
-                    'SEXUAL'           :'BLOCK_LOW_AND_ABOVE',
+                    'SEXUAL'           :'BLOCK_MEDIUM_AND_ABOVE',
                     'DANGEROUS'        :'BLOCK_LOW_AND_ABOVE'}
 tools             =  None
 system_instruction='''
