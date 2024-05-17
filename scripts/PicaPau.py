@@ -82,29 +82,31 @@ def safety(chat, prompt):
     except Exception as e:
         return 'Ei, não é legal falar assim! Vamos conversar sobre outra coisa.'
 
+st.divider()
 # Chat:
 ss      ='Se prompt contiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio, desaprove e não converse sobre isso.'
-chat    =           model.start_chat(enable_automatic_function_calling=False)
-res     =            chat.send_message(system_instruction.format(query='Inicie a conversa.'))
-res_text=             res._result.candidates[0].content.parts[0].text
-st.write('Pica-Pau:', res_text)
+chat            =model.start_chat(enable_automatic_function_calling=False)
+start           = chat.send_message(system_instruction.format(query='Inicie a conversa'))
+ai_avatar       ='🐤'
+hm_avatar       ='👦🏼'
+if 'message' not in st.session_state:
+        with  st.chat_message('ai', avatar='🐤'):
+              st.write(start.text)
+for message    in st.session_state.messages:
+        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        with       st.chat_message(message['role'], avatar=avatar):
+                   st.write(message['content'])
+if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human'):
+                   st.write(query)
+        st.session_state.messages.append({'role':'human','content':query})
+        with       st.chat_message('ai'):
+                   response= chat.send_message(system_instruction.format(query=query))
 
-for message  in  st.session_state.messages:
-    with         st.chat_message(message['role']):
-                 st.markdown(message['content'])
-if query :=      st.chat_input('Digite sua mensagem aqui…'):
-                 st.session_state.messages.append({'role':'user','content':query})
-                 with st.chat_message('user'):
-                      st.markdown(query)
+        if  ss in query:
+                   st.write('Ei, não é legal falar assim! Vamos conversar sobre outra coisa.')
 
-                 with st.chat_message('assistant'):
-                         response    =     chat.send_message(system_instruction.format(query=query))
-
-                 if  ss in query:
-                    st.write('Ei, não é legal falar assim! Vamos conversar sobre outra coisa.')
-
-                 response            =     chat.send_message(query)
-                 response_text       = response._result.candidates[0].content.parts[0].text
-                 st.write('Pica-Pau:', response_text)
+        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.write(response.text)
 
 st.toast('Pica-Pau!', icon='🐤')
