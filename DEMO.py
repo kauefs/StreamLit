@@ -3,7 +3,7 @@ import altair           as alt
 import streamlit        as st
 from   urllib.error import URLError
 import sys
-st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
+st.set_page_config(page_title='ƊⱭȾɅViƧi&#x1F9FF;Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
 # DATA:
 @st.cache_data
 def get_UN_data():
@@ -11,7 +11,7 @@ def get_UN_data():
     df              =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
     return df.set_index('Region')
 # SIDE:
-st.sidebar.title('ƊⱭȾɅViƧi🧿Ƞ')
+st.sidebar.title('ƊⱭȾɅViƧi&#x1F9FF;Ƞ')
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
 st.sidebar.divider(                )
 with    st.sidebar.container(      ):
@@ -30,9 +30,9 @@ st.sidebar.markdown('''
 [![Python](  https://img.shields.io/badge/-3-4584B6?logo=python&logoColor=FFDE57&labelColor=4584B6&color=646464)](https://www.python.org/)
 [![License]( https://img.shields.io/github/license/kauefs/StreamLit?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
 
-2024.04.01 &copy; 2024 [ƊⱭȾɅViƧi🧿Ƞ](https://datavision.one/) &trade;''')
+2024.04.01 &copy; 2024 [ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://datavision.one/) &trade;''')
 # MAIN:
-st.markdown('''![ƊⱭȾɅViƧi🧿Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
+st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider()
 st.title(       'StreamLitDEMO')
 st.header(      'DataFrame&Chart')
