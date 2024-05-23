@@ -62,7 +62,7 @@ model             =genai.GenerativeModel(model_name        =     model_name,
                                          tools             =    tools )
 st.sidebar.divider()
 st.sidebar.markdown('''
-![2024.05.15](  https://img.shields.io/badge/-000000?style=flat&logo=&logoColor=000000&label=2024.05.15&labelColor=000000&color=000000)
+![2024.05.15](  https://img.shields.io/badge/24.05.15-000000)
 
 [![GitHub](     https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
 [![Medium](     https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
