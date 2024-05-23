@@ -31,7 +31,7 @@ st.sidebar.markdown('''
 [![License]( https://img.shields.io/github/license/kauefs/StreamLit?style=flat&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71&color=D22128)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logo=&logoColor=0065FF&label=&copy;2024&labelColor=0065FF&color=0065FF)](https://datavision.one/)
-[![2024.04.01](  https://img.shields.io/badge/-000000?style=plastic&logo=&logoColor=000000&label=2024.04.01&labelColor=000000&color=000000)]
+![2024.04.01](  https://img.shields.io/badge/-000000?style=flat-square&logo=&logoColor=000000&label=2024.04.01&labelColor=000000&color=000000)
                     ''')
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
