@@ -27,7 +27,7 @@ table      = st.sidebar.empty()
 success    = st.sidebar.empty()
 st.sidebar.divider()
 st.sidebar.markdown('''
-![2024.05.01](  https://img.shields.io/badge/-000000?style=flat&logo=&logoColor=000000&label=2024.05.01&labelColor=000000&color=000000)
+![2024.05.01](  https://img.shields.io/badge/24.05.01-000000)
 
 [![GitHub](     https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
 [![Medium](     https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
