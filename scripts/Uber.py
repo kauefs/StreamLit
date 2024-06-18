@@ -16,7 +16,7 @@ def load_data(nrows):
 data=load_data(1000)
 # SIDE:
 st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ')
-st.sidebar.divider(              )
+st.sidebar.divider()
 st.sidebar.subheader('DashBoard' )
 hour       = st.sidebar.slider('Hour:', 0, 23, 9)
 # Filtered Hour  PlaceHolder:
