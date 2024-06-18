@@ -13,13 +13,13 @@ def get_UN_data():
 # SIDE:
 st.sidebar.title('ƊⱭȾɅViƧi🧿Ƞ')
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
-st.sidebar.divider(                )
+'---'#st.sidebar.divider(                )
 with    st.sidebar.container(      ):
     if  st.button('StreamLit Hello'):
         st.sidebar.success( 'Hello World!')
     else:
         st.sidebar.info(    'Hello There' )
-st.sidebar.divider(                       )
+'---'#st.sidebar.divider(                       )
 st.sidebar.header('Data Analysis')
 PlaceHolder = st.sidebar.empty(  )
 st.sidebar.markdown(sys.version  )
@@ -37,7 +37,7 @@ st.sidebar.markdown('''
                     ''')
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
-st.divider()
+'---'#st.divider()
 st.title(       'StreamLitDEMO')
 st.header(      'DataFrame&Chart')
 try:
@@ -60,4 +60,4 @@ except  URLError as e:st.error( '''
                                 '''
                                 % e.reason)
 PlaceHolder.scatter_chart(df, height=450, use_container_width=True)
-st.divider()
+'---'#st.divider()
