@@ -24,7 +24,7 @@ https://dev.to/envoy_/series/18228
 
 <p align=center><a href=https://pandas.pydata.org/ target=_blank rel=noreferrer><img src=https://pandas.pydata.org/static/img/pandas_white.svg width=10% alt=Pandas/></p>
 
-## <ins>StreamLit DashBoards & Pages & Apps</ins>
+## <ins>StreamLit Projects</ins>
 
 * [DEMO](https://daemon.streamlit.app/)
 * [Uber NYC](https://ubernyc.streamlit.app/)
