@@ -16,7 +16,7 @@ https://dev.to/envoy_/series/18228
 
 <p align=center>👨🏻‍💻</p>
 
-<p align=center>Data Science <b>|</b> Computer Vision <b>|</b> ML <b>|</b> AI <b>|</b> ☁️ <b>|</b> CyberSecurity <b>|</b> </p>
+<p align=center>DS <b>|</b> CV <b>|</b> ML <b>|</b> AI <b>|</b> ☁️ <b>|</b> CS <b>|</b> </p>
 
 <!--<p align=center><a href=https://www.python.org/ target=_blank rel=noreferrer><img src=https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg width=35 height=35 alt=Python/></p>-->
 
@@ -26,6 +26,7 @@ https://dev.to/envoy_/series/18228
 
 ## <ins>StreamLit Projects</ins>
 
+* [Brazil 🇧🇷 International Tourist Arrivals](https://tourismbr.streamlit.app/)
 * [DEMO](https://daemon.streamlit.app/)
 * [Uber NYC](https://ubernyc.streamlit.app/)
 * [Stocks](https://sto-cks.streamlit.app/)
