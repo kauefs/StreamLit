@@ -4,8 +4,8 @@ https://dev.to/envoy_/series/18228
 -->
 # <p align=center><font color=#F0F0F0 font-family=Georgia><ins>ƊⱭȾɅViƧi&#x1F9FF;Ƞ</ins>&trade;</font></p>
 
-[![ƊⱭȾɅViƧi🧿Ƞ         ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic   )](https://datavision.one/)
 [![Work in Progress     ](https://img.shields.io/badge/-FF103F?style=flat&logo=icloud&logoColor=FFFFFF&label=Work%20in%20Progress&labelColor=FF103F&color=FF103F)](https://github.com/kauefs/)
+[![ƊⱭȾɅViƧi🧿Ƞ         ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic   )](https://datavision.one/)
 [![Medium               ](https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF      )](https://medium.com/@kauefs)
 [![LinkedIn             ](https://img.shields.io/badge/-2867B2?logo=linkedin&logoColor=FFFFFF    )](https://www.linkedin.com/in/kauefs/)
 [![Python               ](https://img.shields.io/badge/3-646464?logo=python&logoColor=FFDE57&labelColor=4584B6                                                                                                                                           )](https://www.python.org/)
@@ -20,9 +20,9 @@ https://dev.to/envoy_/series/18228
 
 <!--<p align=center><a href=https://www.python.org/ target=_blank rel=noreferrer><img src=https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg width=35 height=35 alt=Python/></p>-->
 
-<p align=center><a href=https://www.python.org/    target=_blank rel=noreferrer><img src=https://www.python.org/static/img/python-logo.png    width=10% alt=Python/></p>
+<p align=center><a href=https://www.python.org/    target=_blank rel=noreferrer><img src=https://www.python.org/static/img/python-logo.png    width=15% alt=Python/></p>
 
-<p align=center><a href=https://pandas.pydata.org/ target=_blank rel=noreferrer><img src=https://pandas.pydata.org/static/img/pandas_white.svg width=10% alt=Pandas/></p>
+<p align=center><a href=https://pandas.pydata.org/ target=_blank rel=noreferrer><img src=https://pandas.pydata.org/static/img/pandas_white.svg width=15% alt=Pandas/></p>
 
 ## <ins>StreamLit Projects</ins>
 
