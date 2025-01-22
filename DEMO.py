@@ -3,7 +3,7 @@ import pandas         as   pd
 import streamlit      as   st
 from   urllib.error import URLError
 import                     sys
-st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ&trade;', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
+st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
 # DATA:
 @st.cache_data
 def get_UN_data():
