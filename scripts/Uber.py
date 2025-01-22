@@ -15,9 +15,9 @@ def load_data(nrows):
     return data
 data=load_data(1000)
 # SIDE:
-st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ')
-'---'#st.sidebar.divider(              )
-st.sidebar.subheader('DashBoard' )
+st.sidebar.title(   'ƊⱭȾɅViƧi🧿Ƞ&trade;')
+st.sidebar.divider(             )
+st.sidebar.subheader('DashBoard')
 hour       = st.sidebar.slider('Hour:', 0, 23, 9)
 # Filtered Hour  PlaceHolder:
 info       = st.sidebar.empty()
@@ -25,7 +25,7 @@ info       = st.sidebar.empty()
 table      = st.sidebar.empty()
 # Filtered Rides PlaceHolder:
 success    = st.sidebar.empty()
-'---'#st.sidebar.divider()
+st.sidebar.divider(           )
 st.sidebar.markdown('''
 ![2024.05.01](  https://img.shields.io/badge/2024.05.01-000000)
 
