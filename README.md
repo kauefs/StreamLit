@@ -4,7 +4,7 @@ https://dev.to/envoy_/series/18228
 -->
 # <p align=center><font color=#F0F0F0 font-family=Georgia><ins>ƊⱭȾɅViƧi&#x1F9FF;Ƞ</ins>&trade;</font></p>
 
-[![Work in Progress     ](https://img.shields.io/badge/Progress-FF103F?label=Work%20in&labelColor=6D6E71)](https://github.com/kauefs/portfolio/issues)
+[![Work in Progress     ](https://img.shields.io/badge/Progress-FF103F?logo=icloud&logoColor=FFFFFF&label=Work%20in&labelColor=6D6E71)](https://github.com/kauefs/portfolio/issues)
 [![ƊⱭȾɅViƧi🧿Ƞ         ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logoColor=0065FF&label=&copy;2025&labelColor=0065FF)](https://datavision.one/)
 [![Medium               ](https://img.shields.io/badge/Medium-000000?logo=medium&logoColor=FFFFFF      )](https://medium.com/@kauefs)
 [![LinkedIn             ](https://img.shields.io/badge/LinkedIn-2867B2?logo=linkedin&logoColor=FFFFFF    )](https://www.linkedin.com/in/kauefs/)
