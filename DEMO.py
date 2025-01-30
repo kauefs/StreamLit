@@ -22,7 +22,7 @@ with    st.sidebar.container(      ):
 '---'#st.sidebar.divider(                       )
 st.sidebar.header('Data Analysis')
 PlaceHolder = st.sidebar.empty(  )
-st.sidebar.markdown('System Ready: Python –', sys.version)
+st.sidebar.write   ('System Ready: Python –', sys.version)
 st.sidebar.markdown('''
 ![2024.04.01](  https://img.shields.io/badge/2024.04.01-000000)
 
