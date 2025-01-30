@@ -7,39 +7,39 @@ st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻
 # DATA:
 @st.cache_data
 def get_UN_data():
-    AWS_BUCKET_URL  =    'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
-    df              =   pd.read_csv(AWS_BUCKET_URL + '/agri.csv.gz')
+    DATA  =  'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
+    df    =pd.read_csv (DATA + '/agri.csv.gz')
     return df.set_index('Region')
 # SIDE:
-st.sidebar.title('ƊⱭȾɅViƧi🧿Ƞ&trade;')
+st.sidebar.title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
 st.sidebar.markdown('''Data Science **|** Computer Vision **|** ML **|** AI **|** ☁️ **|** CyberSecurity **|**  👨🏻‍💻''')
 '---'#st.sidebar.divider(                )
 with    st.sidebar.container(      ):
     if  st.button('StreamLit Hello'):
-        st.sidebar.success( 'Hello World!')
+        st.sidebar.success ('Hello World!')
     else:
-        st.sidebar.info(    'Hello There' )
+        st.sidebar.info    ('Hello There' )
 '---'#st.sidebar.divider(                       )
 st.sidebar.header('Data Analysis')
 PlaceHolder = st.sidebar.empty(  )
-st.sidebar.markdown(sys.version  )
+st.sidebar.markdown('System Ready: Python –', sys.version)
 st.sidebar.markdown('''
 ![2024.04.01](  https://img.shields.io/badge/2024.04.01-000000)
 
-[![GitHub](     https://img.shields.io/badge/-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
-[![Medium](     https://img.shields.io/badge/-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
-[![LinkedIn](   https://img.shields.io/badge/-0077B5?logo=linkedin&logoColor=FFFFFF)](https://www.linkedin.com/in/kauefs/)
-[![Python](     https://img.shields.io/badge/3-646464?logo=python&logoColor=FFDE57&labelColor=4584B6)](https://www.python.org/)
+[![GitHub      ](https://img.shields.io/badge/GitHub-000000?logo=github&logoColor=FFFFFF)](https://github.com/kauefs/)
+[![Medium      ](https://img.shields.io/badge/Medium-000000?logo=medium&logoColor=FFFFFF)](https://medium.com/@kauefs)
+[![LinkedIn    ](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=FFFFFF)](https://www.linkedin.com/in/kauefs/)
+[![Python      ](https://img.shields.io/badge/Python3-646464?logo=python&logoColor=FFDE57&labelColor=4584B6)](https://www.python.org/)
 
-[![License](    https://img.shields.io/badge/Apache--2.0-D22128?&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71)](https://www.apache.org/licenses/LICENSE-2.0)
+[![License     ](https://img.shields.io/badge/Apache--2.0-D22128?&logo=apache&logoColor=CB2138&label=License&labelColor=6D6E71)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logoColor=0065FF&label=&copy;2024&labelColor=0065FF)](https://datavision.one/)
                     ''')
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 '---'#st.divider()
-st.title(       'StreamLitDEMO')
-st.header(      'DataFrame&Chart')
+st.title   ('StreamLitDEMO'  )
+st.header  ('DataFrame&Chart')
 try:
     df              = get_UN_data()
     countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
