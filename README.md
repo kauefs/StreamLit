@@ -25,6 +25,12 @@ https://dev.to/envoy_/series/18228
 
 <p align=center><a href=https://pandas.pydata.org/ target=_blank rel=noreferrer><img src=https://pandas.pydata.org/static/img/pandas_white.svg width=15% alt=Pandas/></p>
 
+<div>
+<p align=center>
+    <a href=https://skillicons.dev/>
+        <img src='https://skillicons.dev/icons?i=python,vscode,r,tensorflow,html,css,js,react,'/></a></p>
+</div>
+
 ## <b>StreamLit Projects</b>
 
 * [Brazil 🇧🇷 International Tourist Arrivals](    https://tourismbr.streamlit.app/)
