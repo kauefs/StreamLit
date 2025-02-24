@@ -25,7 +25,7 @@ https://dev.to/envoy_/series/18228
 
 <div align=center>
     <a href=https://skillicons.dev/>
-        <img src='https://skillicons.dev/icons?i=python,vscode,r,tensorflow,html,css,js,react,'/></a></p>
+        <img src='https://skillicons.dev/icons?i=python,vscode,r,pytorch,tensorflow,html,css,js,react,'/></a></p>
 </div>
 
 ## <b>StreamLit Projects</b>
