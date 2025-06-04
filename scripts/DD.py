@@ -26,7 +26,7 @@ st.sidebar.info(    'Dungeous')
 st.sidebar.write(   '&'       )
 st.sidebar.success( 'Dragons' )
 # Building Model:
-model_name        = 'gemini-pro'
+model_name        = 'gemini-2.0-flash'
 generation_config ={'candidate_count'  : 1,
                     'temperature'      : 0.75,
                     'top_p'            : 0.95,
