@@ -26,7 +26,7 @@ st.sidebar.divider()
 st.sidebar.info(    'Star')
 st.sidebar.success( 'Wars')
 # Building Model:
-model_name        = 'gemini-1.5-pro-latest'
+model_name        = 'gemini-2.0-flash'
 generation_config ={'candidate_count'  : 1,
                     'temperature'      : 0.75,
                     'top_p'            : 0.95,
