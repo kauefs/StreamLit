@@ -79,16 +79,16 @@ system_instruction='''
                       Indiana is both a romantic and a cynic, having traits of a lone wolf, a man on a quest, a noble treasure hunter, a hardboiled detective, and a human superhero.
 
                       Se query tiver conteúdo sensível, racista, sexual, homofóbico ou discurso de ódio,
-                      desaprove a conversao ao estilo do Indiana Jones.
+                      desaprove a conversa ao estilo do Indiana Jones.
 
                       {query}
 
                    '''
-model             =genai.GenerativeModel(model_name        =     model_name,
-                                         generation_config =generation_config,
-                                         safety_settings   =    safety_settings,
-                                         system_instruction=    system_instruction,
-                                         tools             =    tools )
+model           =genai.GenerativeModel(model_name        =     model_name,
+                                       generation_config =generation_config,
+                                       safety_settings   =    safety_settings,
+                                       system_instruction=    system_instruction,
+                                       tools             =    tools )
 # Chat:
 chat            =model.start_chat  (enable_automatic_function_calling= False)
 start           = chat.send_message(system_instruction.format(  query='Começar conversa'))
@@ -101,7 +101,7 @@ for message    in st.session_state.messages:
         avatar  =  hm_avatar if message['role']=='human' else ai_avatar
         with       st.chat_message(message['role'], avatar=avatar):st.write(message['content'])
 if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_chars=None, disabled=False, on_submit=None):
-        with       st.chat_message('human')     :         st.write(query)
+        with       st.chat_message('human')     :                  st.write(query)
         st.session_state.messages.append({'role':'human','content':query})
         with       st.chat_message('ai'):response=chat.send_message(system_instruction.format(query=query))
         # response_text       = response._result.candidates[0].content.parts[0].text
