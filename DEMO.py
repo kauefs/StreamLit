@@ -21,6 +21,7 @@ with     st.sidebar.container(      ):
 st.sidebar.divider( )
 st.sidebar.header  ('Data Analysis')
 PlaceHolder=st.sidebar.empty( )
+st.sidebar.divider( )
 st.sidebar.write   ('Python', sys.version)
 st.sidebar.markdown('''
 ![2024.04.01   ](https://img.shields.io/badge/2024.04.01-000000)
@@ -49,7 +50,7 @@ try:
         st.write(                     '### Gross Agricultural Production ($B)', data.sort_index( ))
         data        = data.T.reset_index( )
         data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross AgriCultural Product ($B)'})
-        chart       =(alt.Chart(data).mark_area(opacity=.25).encode(x    =      'year:T',
+        chart       =(alt.Chart(data).mark_area(opacity=.25).encode(x    =      'year:T', title=None,
                                                                     y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
                                                                     color=      'Region:N'))
         st.altair_chart(chart, use_container_width=True)
