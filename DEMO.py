@@ -50,8 +50,8 @@ try:
         st.write(                     '### Gross Agricultural Production ($B)', data.sort_index( ))
         data        = data.T.reset_index( )
         data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross AgriCultural Product ($B)'})
-        chart       =(alt.Chart(data).mark_area(opacity=.25).encode(x    =      'year:T', title=None,
-                                                                    y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
+        chart       =(alt.Chart(data).mark_area(opacity=.25).encode(y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
+                                                                    x    =alt.X('year:T'                           , title=None),
                                                                     color=      'Region:N'))
         st.altair_chart(chart, use_container_width=True)
 except  URLError as e:st.error( '''
