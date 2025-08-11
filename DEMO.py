@@ -47,7 +47,7 @@ try:
     else:
         data        =  df.loc[countries]
         data       /=      1000000.0
-        st.write(                     '### Gross Agricultural Production ($B)', data.sort_index( ))
+        st.write(                     '### Gross AgriCultural Production ($B)', data.sort_index( ))
         data        = data.T.reset_index( )
         data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross AgriCultural Product ($B)'})
         chart       =(alt.Chart(data).mark_area(opacity=.25).encode(y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
