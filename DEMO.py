@@ -6,23 +6,22 @@ import                     sys
 st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
 # DATA:
 @st.cache_data
-def get_UN_data():
+def GetData( ):
     DATA  =  'https://streamlit-demo-data.s3-us-west-2.amazonaws.com'
     df    =pd.read_csv (DATA + '/agri.csv.gz')
     return df.set_index('Region')
 # SIDE:
 st.sidebar.title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
 st.sidebar.markdown('''👨🏻‍💻 **|** DS **|** CV **|** ML **|** AI **|** ☁️ **|** CS **|** ''')
-'---'#st.sidebar.divider(                )
-with    st.sidebar.container(      ):
-    if  st.button('StreamLit Hello'):
-        st.sidebar.success ('Hello World!')
-    else:
-        st.sidebar.info    ('Hello There' )
-'---'#st.sidebar.divider(                       )
+st.sidebar.divider( )
+with     st.sidebar.container(      ):
+    if   st.button('StreamLit Hello'):
+         st.sidebar.success ('Hello World!')
+    else:st.sidebar.info    ('Hello There' )
+st.sidebar.divider( )
 st.sidebar.header  ('Data Analysis')
-PlaceHolder = st.sidebar.empty(    )
-st.sidebar.write   ('System Ready: Python –', sys.version)
+PlaceHolder=st.sidebar.empty( )
+st.sidebar.write   ('Python', sys.version)
 st.sidebar.markdown('''
 ![2024.04.01   ](https://img.shields.io/badge/2024.04.01-000000)
 
@@ -37,21 +36,21 @@ st.sidebar.markdown('''
                     ''')
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
-'---'#st.divider()
+st.divider ( )
 st.title   ('StreamLitDEMO'  )
 st.header  ('DataFrame&Chart')
 try:
-    df              = get_UN_data()
-    countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia', 'Brazil', 'China', 'France', 'Germany', 'United States of America'])
+    df              =  GetData( )
+    countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia','Brazil','China','France','Germany','United States of America'])
     if not countries:  st.error(      'Please select at least one country.')
     else:
         data        =  df.loc[countries]
         data       /=      1000000.0
-        st.write(                     '### Gross Agricultural Production ($B)', data.sort_index())
-        data        = data.T.reset_index()
-        data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross Agricultural Product ($B)'})
+        st.write(                     '### Gross Agricultural Production ($B)', data.sort_index( ))
+        data        = data.T.reset_index( )
+        data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross AgriCultural Product ($B)'})
         chart       =(alt.Chart(data).mark_area(opacity=.25).encode(x    =      'year:T',
-                                                                    y    =alt.Y('Gross Agricultural Product ($B):Q', stack=None),
+                                                                    y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
                                                                     color=      'Region:N'))
         st.altair_chart(chart, use_container_width=True)
 except  URLError as e:st.error( '''
@@ -60,4 +59,4 @@ except  URLError as e:st.error( '''
                                 '''
                                 % e.reason)
 PlaceHolder.scatter_chart(df, height=450, use_container_width=True)
-'---'#st.divider()
+st.divider( )
