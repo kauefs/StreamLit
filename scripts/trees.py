@@ -14,9 +14,9 @@ pd.options.plotting.matplotlib.register_converters = True
 plt.rcParams[  'figure.autolayout']    =             True
 plt.rcParams[    'font.family'    ]    =                                         'sans-serif'
 sns.set_theme(context='notebook', style='whitegrid', palette='colorblind',  font='sans-serif', font_scale=1.15, color_codes=True, rc={'grid.color':'1','grid.linestyle':':'})
-FontT={'family':'sans-serif'    ,'color':'#000000', 'size': 13,    'fontweight':'semibold'  }
-FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size': 10,    'fontweight':'regular'   }
-FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size': 10,    'fontweight':'regular'   }
+FontT={'family':'sans-serif'    ,'color':'#000000', 'size'  : 13,   'fontweight':'semibold'  }
+FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size'  : 10,   'fontweight':'regular'   }
+FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size'  : 10,   'fontweight':'regular'   }
 # Page:
 st.set_page_config(page_title='ƊⱭȾɅ Ʌnalysis', page_icon='📊', layout='wide', initial_sidebar_state='collapsed')
 def state( ):
@@ -67,6 +67,7 @@ axMPL       =plt.hist(trees['age'], color='#6595EE')
 plt.xlabel('Age (Days)', fontdict=FontX)
 plt.box   (False)
 st .pyplot(figMPL)
+plt.close (figMPL)
 st .divider( )
 # SeaBorn:
 st.subheader('SeaBorn')
@@ -76,6 +77,7 @@ plt.ylabel(      None)
 plt.xlabel('Age (Days)', fontdict=FontX)
 sns.despine(top= True , left=True, bottom=True, right=True)
 st .pyplot(figSB)
+plt.close (figSB)
 st .divider( )
 # BoKeh:
 # st.subheader('BoKeh')
