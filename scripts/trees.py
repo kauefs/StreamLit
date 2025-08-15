@@ -11,10 +11,9 @@ import     plotly.express    as   px
 from        bokeh.plotting import figure
 # Settings:
 pd.options.plotting.matplotlib.register_converters = True
-pd.options.display.max_columns         =             None
 plt.rcParams[  'figure.autolayout']    =             True
-plt.rcParams[    'font.family'    ]    =                                          'sans-serif'
-sns.set_theme(context='notebook', style='whitegrid', palette='colorblind',  font ='sans-serif', font_scale=1.15, color_codes=True, rc={'grid.color':'1','grid.linestyle':':'})
+plt.rcParams[    'font.family'    ]    =                                         'sans-serif'
+sns.set_theme(context='notebook', style='whitegrid', palette='colorblind',  font='sans-serif', font_scale=1.15, color_codes=True, rc={'grid.color':'1','grid.linestyle':':'})
 FontT={'family':'sans-serif'    ,'color':'#000000', 'size': 13,    'fontweight':'semibold'  }
 FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size': 10,    'fontweight':'regular'   }
 FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size': 10,    'fontweight':'regular'   }
@@ -133,7 +132,7 @@ x      =  st.selectbox('x',['bill_length_mm','bill_depth_mm' ,'flipper_length_mm
 # penguin=  st.file_uploader('Select Local Penguins CSV')
 # if penguin is not None:df=pd.read_csv(penguin)
 # else:     st.stop( )
-df=pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/penguin_app/penguins.csv')
+df     =  pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/penguin_app/penguins.csv')
 chart  =(alt.Chart(df, title="Palmer's Penguins")
             .mark_circle( )
             .encode(x=x, y=y, color='species')
