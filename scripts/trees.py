@@ -45,7 +45,10 @@ st.sidebar.markdown('''
 state( )
 st.title('San Francisco Trees')
 st.divider( )
-trees=pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/trees_app/trees.csv')
+@st.cache_data
+def loadTreesData  ( ):
+    return pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/trees_app/trees.csv')
+trees=loadTreesData( )
 # PyDeck:
 st.subheader('PyDeck')
 trees.dropna(how='any', inplace=True)
@@ -137,10 +140,13 @@ x      =  st.selectbox('x',['bill_length_mm','bill_depth_mm' ,'flipper_length_mm
 # penguin=  st.file_uploader('Select Local Penguins CSV')
 # if penguin is not None:df=pd.read_csv(penguin)
 # else:     st.stop( )
-df     =  pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/penguin_app/penguins.csv')
-chart  =(alt.Chart(df, title="Palmer's Penguins")
-            .mark_circle( )
-            .encode(x=x, y=y, color='species')
-            .interactive( ))
+@st.cache_data
+def loadPenguinsData( ):
+    return pd.read_csv('https://github.com/PacktPublishing/Streamlit-for-Data-Science/raw/refs/heads/main/penguin_app/penguins.csv')
+df=loadPenguinsData ( )
+chart   =(alt.Chart (df, title="Palmer's Penguins")
+             .mark_circle( )
+             .encode(x=x, y=y, color='species')
+             .interactive( ))
 st.altair_chart(chart, use_container_width=True)
 st.divider( )
