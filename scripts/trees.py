@@ -56,7 +56,7 @@ st.divider( )
 # Map:
 st.subheader('Map')
 m=trees.dropna(subset=['longitude','latitude'])
-m=trees.sample(n=1000)
+m=m.sample(n=1000)
 st.map(m)
 st.divider( )
 # MatPlotLib:
