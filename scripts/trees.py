@@ -75,13 +75,13 @@ sns.despine(top= True , left=True, bottom=True, right=True)
 st .pyplot(figSB)
 st .divider( )
 # BoKeh:
-st.subheader('BoKeh')
-scatterplot=figure (title='Bokeh ScatterPlot')
-scatterplot.scatter(trees['dbh'], trees['site_order'], color='#6595EE')
-scatterplot.yaxis.axis_label='Site Order'
-scatterplot.xaxis.axis_label='DBH'
-st.bokeh_chart(scatterplot)
-st.divider( )
+# st.subheader('BoKeh')
+# scatterplot=figure (title='Bokeh ScatterPlot')
+# scatterplot.scatter(trees['dbh'], trees['site_order'], color='#6595EE')
+# scatterplot.yaxis.axis_label='Site Order'
+# scatterplot.xaxis.axis_label='DBH'
+# st.bokeh_chart(scatterplot)
+# st.divider( )
 # Plotly:
 st.subheader('Plotly')
 fig=px.histogram(trees['dbh'])
