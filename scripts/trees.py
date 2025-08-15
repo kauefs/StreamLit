@@ -8,7 +8,7 @@ import     altair            as   alt
 import matplotlib.pyplot     as   plt
 import     pydeck            as   pdk
 import     plotly.express    as   px
-from        bokeh.plotting import figure
+# from        bokeh.plotting import figure
 # Settings:
 pd.options.plotting.matplotlib.register_converters = True
 plt.rcParams[  'figure.autolayout']    =             True
