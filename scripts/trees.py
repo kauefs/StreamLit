@@ -19,8 +19,7 @@ FontY={'family':'sans-serif'    ,'color':'#FF4500', 'size'  : 10,   'fontweight'
 FontX={'family':'sans-serif'    ,'color':'#4CAF50', 'size'  : 10,   'fontweight':'regular'   }
 # Page:
 st.set_page_config(page_title='ƊⱭȾɅ Ʌnalysis', page_icon='📊', layout='wide', initial_sidebar_state='collapsed')
-def state( ):
-    if 'points' not in st.session_state:st.session_state.points=[]
+if 'points' not in st.session_state:st.session_state.points=[]
 # SIDE
 st.sidebar.title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
 st.sidebar.divider ( )
@@ -42,7 +41,6 @@ st.sidebar.markdown('''
 [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&label=&copy;2025&labelColor=0065FF)](https://datavision.one/)
                     ''')
 # MAIN:
-state( )
 st.title('San Francisco Trees')
 st.divider( )
 @st.cache_data
