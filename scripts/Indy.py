@@ -1,7 +1,7 @@
 # https://github.com/IAmCristiano/GokuAI/
 # <a target=_blank href=https://icons8.com/icon/24563/indiana-jones>Indiana Jones</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
-import  streamlit           as   st
-import  google.generativeai as   genai
+import  streamlit           as st
+import  google.generativeai as genai
 st.set_page_config(page_title='Indiana Jones', page_icon='IMG/icons8-indiana-jones.svg', layout='wide', initial_sidebar_state='collapsed')
 #  Session State:
 st.session_state.setdefault(None)
@@ -10,12 +10,12 @@ if      'api_key' not in st.session_state:st.session_state.api_key = True
 if      'model'   not in st.session_state:st.session_state.model   = True
 if      'chat'    not in st.session_state:st.session_state.chat    = True
 # API-KEY
-api_key = st.secrets['api_key']
+api_key  =  st.secrets['api_key']
 genai.configure(api_key=api_key)
 # SIDE
 st.sidebar.image   ('https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.markdown('[![Gemini](https://img.shields.io/badge/Gemini_by_Google-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
-st.sidebar.title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
+st.sidebar.warning ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
 st.sidebar.divider ( )
 st.sidebar.info    ('Indiana')
 st.sidebar.success ( 'Jones' )
@@ -36,13 +36,13 @@ st.sidebar.markdown('''
 st.markdown('''![Indiana Jones](https://m.media-amazon.com/images/S/pv-target-images/15b63b0ba574b069bcb666ffb3e9df5b636d278ce2c491ee90e5c2844d42332e.jpg)''')
 st.divider()
 # Model:
-model_name        =  'gemini-2.0-flash'
+model_name        =  'gemini-2.5-flash'
 generation_config = {'candidate_count'  : 1,
                      'temperature'      : 0.75,
                      'top_p'            : 0.95,
                      'top_k'            : 3,
                      'stop_sequences'   : None,
-                     'max_output_tokens': 4096}
+                     'max_output_tokens': 16384}
 safety_settings   = {'HATE'             :'BLOCK_ONLY_HIGH',
                      'HARASSMENT'       :'BLOCK_ONLY_HIGH',
                      'SEXUAL'           :'BLOCK_ONLY_HIGH',
@@ -98,13 +98,13 @@ if 'message' not in st.session_state:
         with  st.chat_message('ai', avatar='🧔‍♂️'):
               st.write(start.text)
 for message    in st.session_state.messages:
-        avatar  =  hm_avatar if message['role']=='human' else ai_avatar
+        avatar  =  hm_avatar if    message['role']=='human' else ai_avatar
         with       st.chat_message(message['role'], avatar=avatar):st.write(message['content'])
-if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_chars=None, disabled=False, on_submit=None):
-        with       st.chat_message('human')     :                  st.write(query)
-        st.session_state.messages.append({'role':'human','content':query})
+if query       :=  st.chat_input(placeholder='Que aventuras teremos hoje?', max_chars=None, disabled=False, on_submit=None):
+        with       st.chat_message('human')      :                 st.write(query)
+        st.session_state.messages.append( {'role':'human'  ,                              'content':query})
         with       st.chat_message('ai'):response=chat.send_message(system_instruction.format(query=query))
         # response_text       = response._result.candidates[0].content.parts[0].text
-        st.session_state.messages.append({'role':'ai','content':response.text})
+        st.session_state.messages.append({'role':   'ai','content':           response.text              })
         st.write(response.text)
 st.toast('Indy!', icon='🪬')
