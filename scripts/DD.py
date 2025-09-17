@@ -1,22 +1,17 @@
 # https://github.com/IAmCristiano/GokuAI/
 # <a target=_blank href=https://icons8.com/icon/62eCWQCYHiGy/dungeons-and-dragons>Dungeons and Dragons</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
-
 import  streamlit           as   st
 import  google.generativeai as   genai
-
 st.set_page_config(page_title='Dungeons&Dragons', page_icon='https://img.icons8.com/color/48/dungeons-and-dragons.png', layout='wide', initial_sidebar_state='collapsed')
-
 #  Session State Start:
 st.session_state.setdefault(None)
 if      'message' not in st.session_state:st.session_state.messages=[]
 if      'api_key' not in st.session_state:st.session_state.api_key =True
 if      'model'   not in st.session_state:st.session_state.model   =True
 if      'chat'    not in st.session_state:st.session_state.chat    =True
-
 # API-KEY
 api_key = st.secrets['api_key']
 genai.configure(api_key=api_key)
-
 # SIDE
 st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.markdown('[![Gemini](https://img.shields.io/badge/Gemini_by_Google-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
@@ -26,13 +21,13 @@ st.sidebar.info(    'Dungeous')
 st.sidebar.write(   '&'       )
 st.sidebar.success( 'Dragons' )
 # Building Model:
-model_name        = 'gemini-2.0-flash'
+model_name        = 'gemini-2.5-flash-lite'
 generation_config ={'candidate_count'  : 1,
                     'temperature'      : 0.75,
                     'top_p'            : 0.95,
                     'top_k'            : 3,
                     'stop_sequences'   : None,
-                    'max_output_tokens': 1024}
+                    'max_output_tokens': 4096}
 safety_settings   ={'HATE'             :'BLOCK_NONE',
                     'HARASSMENT'       :'BLOCK_NONE',
                     'SEXUAL'           :'BLOCK_NONE',
@@ -69,7 +64,6 @@ st.sidebar.markdown('''
                     ''')
 
 # MAIN
-
 st.markdown('''![D&D](https://upload.wikimedia.org/wikipedia/en/d/d7/Dungeons_and_Dragons_DVD_boxset_art.jpg)''')
 st.divider()
 # Chat:
@@ -92,5 +86,4 @@ if query       :=  st.chat_input(placeholder='Type message here…', max_chars=N
                    response= chat.send_message(system_instruction.format(query=query))
         st.session_state.messages.append({'role':'ai','content':response.text})
         st.write(response.text)
-
 st.toast('Uni!', icon='🦄')
