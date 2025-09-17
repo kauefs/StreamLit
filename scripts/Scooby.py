@@ -1,22 +1,17 @@
 # https://github.com/IAmCristiano/GokuAI/
 # <a target=_blank href=https://icons8.com/icon/tlzsVoeHOw9V/scooby-doo>Scooby Doo</a> icon by <a target=_blank href=https://icons8.com/>Icons8</a>
-
 import streamlit           as st
 import google.generativeai as genai
-
 st.set_page_config(page_title='Scooby-Doo', page_icon='img/icons8-scooby-doo.svg', layout='wide', initial_sidebar_state='collapsed')
-
 #  Session State Start:
 st.session_state.setdefault(None)
 if      'message' not in st.session_state:st.session_state.messages=[]
 if      'api_key' not in st.session_state:st.session_state.api_key =True
 if      'model'   not in st.session_state:st.session_state.model   =True
 if      'chat'    not in st.session_state:st.session_state.chat    =True
-
 # API-KEY
 api_key = st.secrets['api_key']
 genai.configure(api_key=api_key)
-
 # SIDE
 st.sidebar.image(   'https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg')
 st.sidebar.markdown('[![Gemini](https://img.shields.io/badge/Gemini_by_Google-34A853?style=flat&logo=google&logoColor=EA4335&labelColor=4285F4&color=FBBC05)](https://gemini.google.com/)')
@@ -25,13 +20,13 @@ st.sidebar.divider()
 st.sidebar.info(    'Scooby')
 st.sidebar.success( 'Doo'   )
 # Building Model:
-model_name        = 'gemini-pro'
+model_name        = 'gemini-2.5-flash-lite'
 generation_config ={'candidate_count'  : 1,
                     'temperature'      : 0.75,
                     'top_p'            : 0.95,
                     'top_k'            : 3,
                     'stop_sequences'   : None,
-                    'max_output_tokens': 1024}
+                    'max_output_tokens': 4096}
 safety_settings   ={'HATE'             :'BLOCK_MEDIUM_AND_ABOVE',
                     'HARASSMENT'       :'BLOCK_MEDIUM_AND_ABOVE',
                     'SEXUAL'           :'BLOCK_MEDIUM_AND_ABOVE',
@@ -73,7 +68,6 @@ st.sidebar.markdown('''
 
 [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logo=&logoColor=0065FF&label=&copy;2024&labelColor=0065FF&color=0065FF)](https://datavision.one/)
                   ''')
-
 # MAIN
 st.image(   'https://upload.wikimedia.org/wikipedia/commons/9/9a/Scooby_doo_logo.png')
 st.divider()
@@ -97,5 +91,4 @@ if query       :=  st.chat_input(placeholder='Digite aqui sua mensagem…', max_
                    response= chat.send_message(system_instruction.format(query=query))
         st.session_state.messages.append({'role':'ai','content':response.text})
         st.write(response.text)
-
 st.toast('Scooby-Doo!', icon='🐕')
