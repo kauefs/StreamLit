@@ -13,15 +13,17 @@ messageFormat                        = '%(asctime)s %(message)s'
 [client]
 
 showErrorDetails                     = 'none'
-toolbarMode                          = 'minimal'
+toolbarMode                          = 'auto'
 showSidebarNavigation                =  true
 
 [runner]
 
 magicEnabled                         =  true
-postScriptGC                         =  true
 fastReruns                           =  true
 enforceSerializableSessionState      =  false
+enumCoercion                         = 'off'
+postScriptGC                         =  true
+
 
 [browser]
 
@@ -31,6 +33,7 @@ gatherUsageStats                     =  false
 
 fileWatcherType                      = 'auto'
 cookieSecret                         =  false
+headless                             =  false
 runOnSave                            =  true
 enableCORS                           =  true
 enableXsrfProtection                 =  true
