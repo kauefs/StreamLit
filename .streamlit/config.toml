@@ -31,7 +31,7 @@ gatherUsageStats                     = false
 [server]
 
 fileWatcherType                      = 'auto'
-headless                             = false
+headless                             =  true
 runOnSave                            =  true
 enableCORS                           =  true
 enableXsrfProtection                 =  true
