@@ -9,7 +9,7 @@ matplotlib
 seaborn
 pydeck
 plotly
-altair
+altair<5
 #bokeh==2.4.3
 yfinance
 mplfinance
@@ -19,7 +19,7 @@ folium
 scipy
 scikit-learn
 tensorflow
-streamlit==1.41.0
+streamlit>1.49.0
 streamlit_folium
 streamlit-bokeh
 streamlit_image_coordinates
