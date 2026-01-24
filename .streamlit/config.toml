@@ -32,7 +32,6 @@ gatherUsageStats                     =  false
 [server]
 
 fileWatcherType                      = 'auto'
-cookieSecret                         =  false
 headless                             =  false
 runOnSave                            =  true
 enableCORS                           =  true
