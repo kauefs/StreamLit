@@ -1,8 +1,8 @@
-import altair         as   alt
 import pandas         as   pd
 import streamlit      as   st
-from   urllib.error import URLError
+import altair         as   alt
 import                     sys
+from   urllib.error import URLError
 st.set_page_config(page_title='ƊⱭȾɅViƧi🧿Ƞ', page_icon='👨🏻‍💻', layout='wide', initial_sidebar_state='expanded')
 # DATA:
 @st.cache_data
@@ -42,18 +42,18 @@ st.title   ( 'StreamLitDEMO' )
 st.header  ('DataFrame&Chart')
 try:
     df              =  GetData( )
-    countries       =  st.multiselect('🌎🌍🌏:', list(df.index), ['Australia','Brazil','China','France','Germany','United States of America'])
+    countries       =  st.multiselect('🌎🌍🌏:', list(df.index),['Australia','Brazil','China','France','Germany','United States of America'])
     if not countries:  st.error(      'Please select at least one country.')
     else:
         data        =  df.loc[countries]
         data       /=      1000000.0
         st.write(                     '### Gross AgriCultural Production ($B)', data.sort_index( ))
         data        = data.T.reset_index( )
-        data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year','value':'Gross AgriCultural Product ($B)'})
-        chart       =(alt.Chart(data).mark_area(opacity=.25).encode(y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
-                                                                    x    =alt.X('year:T'                           , title=None),
-                                                                    color=    'Region:N'))
-        st.altair_chart(chart, use_container_width=True)
+        data        =   pd.melt (data, id_vars=['index']).rename(columns={'index':'year','value':'Gross AgriCultural Product ($B)'})
+        chart       =( alt.Chart(data).mark_area(opacity=.25).encode(y    =   alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
+                                                                     x    =   alt.X('year:T'                           , title=None),
+                                                                     color=       'Region:N'))
+        st.altair_chart(chart, width='stretch')
 except  URLError as e:st.error( '''
                                 **This demo requires internet access.**
                                 Connection error: %s
