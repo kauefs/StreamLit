@@ -38,7 +38,7 @@ st.sidebar.markdown('''
 # MAIN:
 st.markdown('''![ƊⱭȾɅViƧi&#x1F9FF;Ƞ](https://raw.githubusercontent.com/kauefs/StreamLit/%40/img/DataVision3.png)''')
 st.divider ( )
-st.title   ('StreamLitDEMO'  )
+st.title   ( 'StreamLitDEMO' )
 st.header  ('DataFrame&Chart')
 try:
     df              =  GetData( )
@@ -49,15 +49,15 @@ try:
         data       /=      1000000.0
         st.write(                     '### Gross AgriCultural Production ($B)', data.sort_index( ))
         data        = data.T.reset_index( )
-        data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year', 'value':'Gross AgriCultural Product ($B)'})
+        data        =  pd.melt(data, id_vars=['index']).rename(columns={'index':'year','value':'Gross AgriCultural Product ($B)'})
         chart       =(alt.Chart(data).mark_area(opacity=.25).encode(y    =alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
                                                                     x    =alt.X('year:T'                           , title=None),
-                                                                    color=      'Region:N'))
+                                                                    color=    'Region:N'))
         st.altair_chart(chart, use_container_width=True)
 except  URLError as e:st.error( '''
                                 **This demo requires internet access.**
                                 Connection error: %s
                                 '''
                                 % e.reason)
-PlaceHolder.scatter_chart(df, height=450, use_container_width=True)
+PlaceHolder.scatter_chart(df, height=450, width='stretch')
 st.divider( )
