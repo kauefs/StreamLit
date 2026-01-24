@@ -24,7 +24,6 @@ enforceSerializableSessionState      = false
 enumCoercion                         = 'off'
 postScriptGC                         =  true
 
-
 [browser]
 
 gatherUsageStats                     = false
