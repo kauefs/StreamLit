@@ -11,15 +11,15 @@ def GetData( ):
     df    =pd.read_csv (DATA + '/agri.csv.gz')
     return df.set_index('Region')
 # SIDE:
-st.sidebar.title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
-st.sidebar.markdown('''👨🏻‍💻 **|** DS **|** CV **|** ML **|** AI **|** ☁️ **|** CS **|** ''')
-st.sidebar.divider( )
+st.sidebar .title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
+st.sidebar .markdown('''👨🏻‍💻 **|** DS **|** CV **|** ML **|** AI **|** ☁️ **|** CS **|** ''')
+st.sidebar .divider( )
 with     st.sidebar.container(      ):
     if   st.button('StreamLit Hello'):
          st.sidebar.success ('Hello World!')
     else:st.sidebar.info    ('Hello There' )
-st.sidebar.divider( )
-st.sidebar.header  ('Data Analysis')
+st.sidebar .divider( )
+st.sidebar .header ('Data Analysis')
 PlaceHolder=st.sidebar.empty( )
 st.sidebar.divider( )
 st.sidebar.write   ('Python', sys.version)
