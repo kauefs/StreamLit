@@ -16,16 +16,16 @@ def LoadData(nrows):
 data=LoadData(1000)
 # SIDE:
 st.sidebar.title    ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
-st.sidebar.divider  (           )
+st.sidebar.divider  ( )
 st.sidebar.subheader('DashBoard')
-hour       = st.sidebar.slider('Hour:', 0, 23, 9)
+hour      =st.sidebar.slider('Hour:', 0, 23, 9)
 # Filtered Hour  PlaceHolder:
-info       = st.sidebar.empty ()
+info      =st.sidebar.empty ( )
 # CheckBox       PlaceHolder:
-table      = st.sidebar.empty ()
+table     =st.sidebar.empty ( )
 # Filtered Rides PlaceHolder:
-success    = st.sidebar.empty ()
-st.sidebar.divider(            )
+success   =st.sidebar.empty ( )
+st.sidebar.divider( )
 st.sidebar.markdown('''
 ![2024.05.01   ](https://img.shields.io/badge/2024.05.01-000000)
 
@@ -39,9 +39,9 @@ st.sidebar.markdown('''
 [![ƊⱭȾɅViƧi🧿Ƞ](https://img.shields.io/badge/ƊⱭȾɅViƧi🧿Ƞ&trade;-0065FF?style=plastic&logoColor=0065FF&label=&copy;2024&labelColor=0065FF)](https://datavision.one/)
                     ''')
 # MAIN:
-'---'#st.divider()
+'---'#st.divider( )
 st.title('Uber PickUps in NYC')
-'---'#st.divider()
+'---'#st.divider( )
 FilteredData= data[data[DATE].dt.hour == hour]
 info.info(f'''Loading {FilteredData.shape[0]} PickUps…''')
 st.subheader('PickUps @ %sh: %s' %  (hour, FilteredData.shape[0]))
@@ -55,4 +55,4 @@ if table.checkbox( 'DataFrame', value=False):
     st.subheader(  'DATA'                  )
     success.success(f'''Loading {data.shape[0]} entries…''')
     st.write(data)
-    '---'#st.divider(  )
+    '---'#st.divider( )
