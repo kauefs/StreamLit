@@ -21,7 +21,7 @@ with     st.sidebar.container(      ):
 st.sidebar .divider( )
 st.sidebar .header ('Data Analysis')
 PlaceHolder=st.sidebar.empty( )
-st.sidebar.divider( )
+st.sidebar.divider ( )
 st.sidebar.write   ('Python', sys.version)
 st.sidebar.markdown('''
 ![2024.04.01   ](https://img.shields.io/badge/2024.04.01-000000)
@@ -53,11 +53,11 @@ try:
         chart       =( alt.Chart(data).mark_area(opacity=.25).encode(y    =   alt.Y('Gross AgriCultural Product ($B):Q', stack=None),
                                                                      x    =   alt.X('year:T'                           , title=None),
                                                                      color=       'Region:N'))
-        st.altair_chart(chart, width='stretch')
+        st         . altair_chart(chart         , use_container_width=True)
+        PlaceHolder.scatter_chart(df, height=450, use_container_width=True)
 except  URLError as e:st.error( '''
                                 **This demo requires internet access.**
                                 Connection error: %s
                                 '''
                                 % e.reason)
-PlaceHolder.scatter_chart(df, height=450, width='stretch')
 st.divider( )
