@@ -4,16 +4,16 @@ import  pandas   as pd
 import streamlit as st
 st.set_page_config(page_title='UBER', page_icon='🚕', layout='wide', initial_sidebar_state='expanded')
 # DATA:
-DATE =   'date/time'
-DATA =  ('https://s3-us-west-2.amazonaws.com/streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+DATE  =  'date/time'
+DATA  = ('https://s3-us-west-2.amazonaws.com/streamlit-demo-data/uber-raw-data-sep14.csv.gz')
 @st.cache_data
 def LoadData(nrows):
     data                       = pd.read_csv(DATA, nrows=nrows)
-    lowercase                  = lambda x: str(x).lower(      )
+    lowercase                  = lambda x:str(x).lower(       )
     data.rename(lowercase, axis='columns',inplace=True        )
     data[DATE]                 = pd.to_datetime(data[DATE]    )
     return data
-data=LoadData(1000)
+data=LoadData(5000)
 # SIDE:
 st.sidebar.title    ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
 st.sidebar.divider  ( )
@@ -22,7 +22,7 @@ hour      =st.sidebar.slider('Hour:', 0, 23, 9)
 # Filtered Hour  PlaceHolder:
 info      =st.sidebar.empty ( )
 # CheckBox       PlaceHolder:
-table     =st.sidebar.empty ( )
+table     =st.sidebar.checkbox('DataFrame', value=False)
 # Filtered Rides PlaceHolder:
 success   =st.sidebar.empty ( )
 st.sidebar.divider( )
@@ -42,17 +42,18 @@ st.sidebar.markdown('''
 '---'#st.divider( )
 st.title('Uber PickUps in NYC')
 '---'#st.divider( )
-FilteredData= data[data[DATE].dt.hour == hour]
+FilteredData=data[data[DATE].dt.hour==hour]
 info.info(f'''Loading {FilteredData.shape[0]} PickUps…''')
-st.subheader('PickUps @ %sh: %s' %  (hour, FilteredData.shape[0]))
-st.map(FilteredData)
+st.subheader('PickUps @ %sh: %s' %  (hour,  FilteredData.shape[0]))
+st.map(FilteredData, use_container_width=True)
 '---'#st.divider(        )
 st.subheader('PickUps by Hour:')
-hist  = np.histogram(data[DATE].dt.hour, bins=24, range=(0,24))[0]
-st.bar_chart(hist)
+hist  =np.histogram(data[DATE].dt.hour, bins=24, range=(0,24))[0]
+chart =pd.DataFrame({'Rides':hist},    index=    range   (24))
+st.bar_chart( chart, use_container_width=True)
 '---'#st.divider(      )
-if table.checkbox( 'DataFrame', value=False):
-    st.subheader(  'DATA'                  )
+if table:
+    st.subheader   (   'DATA'                              )
     success.success(f'''Loading {data.shape[0]} entries…''')
-    st.write(data)
+    st.dataframe(data, use_container_width=True)
     '---'#st.divider( )
