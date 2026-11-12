@@ -12,7 +12,7 @@ def GetData( ):
     return df.set_index('Region')
 # SIDE:
 st.sidebar .title   ('ƊⱭȾɅViƧi🧿Ƞ&trade;')
-st.sidebar .markdown('''<p>🧑🏻‍💻DS/ML (AIaaS) CV/DL☁️</p>''')
+st.sidebar .markdown('''🧑🏻‍💻DS/ML (AIaaS) CV/DL☁️''')
 st.sidebar .divider( )
 with     st.sidebar.container(      ):
     if   st.button('StreamLit Hello'):
